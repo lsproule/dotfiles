@@ -1,0 +1,10 @@
+plugin
+custom
+spell
+ftplugin
+coc-settings.json
+.luarc.jsoni
+.jukit
+.github
+.stylua.toml
+lazy-lock.json
