@@ -3,12 +3,17 @@
 
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
-
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
 ZSH_THEME="awesomepanda"
+
+source $ZSH/oh-my-zsh.sh
+source ~/kube-ps1/kube-ps1.sh
+export PROMPT='$(kube_ps1)t'$PROMPT
+KUBE_PS1_SYMBOL_USE_IMG=false
+KUBE_PS1_SYMBOL_ENABLE=false
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
@@ -113,7 +118,8 @@ alias vim="nvim"
 alias wrk="cd ~/wrk/"
 alias pbcopy="xclip -sel clip"
 alias luamake=/home/lucas/lua-language-server/3rd/luamake/luamake
-
+alias c="clear"
+alias x=exit
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
 __conda_setup="$('/home/lucas/anaconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
