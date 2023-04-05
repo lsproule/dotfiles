@@ -14,7 +14,11 @@ return require('packer').startup(function(use)
 	 'nvim-telescope/telescope.nvim', tag = '0.1.1',
 	requires = { {'nvim-lua/plenary.nvim'} }
 	})
-	use('nvim-treesitter/nvim-treesitter', {run = ':TSUpdate'})
+
+  use 'nvim-tree/nvim-web-devicons'
+  use {'romgrk/barbar.nvim', requires = 'nvim-web-devicons'}
+
+  use('nvim-treesitter/nvim-treesitter', {run = ':TSUpdate'})
 	use('nvim-treesitter/playground')
 	use('mbbill/undotree')	   
 	use('tpope/vim-fugitive')
@@ -54,4 +58,14 @@ return require('packer').startup(function(use)
   end}
   use { 'dccsillag/magma-nvim', run = ':UpdateRemotePlugins' }
   use('luk400/vim-jukit')
+  use('windwp/nvim-ts-autotag')
+  use('andrewstuart/vim-kubernetes')
+  use { 'saadparwaiz1/cmp_luasnip' }
+  use {
+    'L3MON4D3/LuaSnip',
+    after = 'nvim-cmp',
+  --  config = function() require('config.snippets') end,
+  }
+  use "rafamadriz/friendly-snippets"
+
 end)	  

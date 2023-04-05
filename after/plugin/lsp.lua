@@ -5,9 +5,12 @@ lsp.on_attach(function(client, bufnr)
 
 	vim.keymap.set("n", "gd", function() vim.lsp.buf.definition() end, opts)
 	vim.keymap.set("i", "<C-h>", function() vim.lsp.buf.signature_help() end, opts)
-    vim.keymap.set("i", "<CR>",function() vim.lsp.buf.code_action()end, opts);
+  vim.keymap.set("n", "<leader>c",function() vim.lsp.buf.code_action() end, opts);
 end)
 
+require("luasnip/loaders/from_vscode").lazy_load()
+--require("luasnip/loaders/from_vscode").load({ include = { "python" } }) -- Load only python snippets
+require("luasnip/loaders/from_vscode").load({ include = { "javascript" } }) -- Load only python snippets
 -- (Optional) Configure lua language server for neovim
 require('lspconfig').lua_ls.setup(lsp.nvim_lua_ls())
 lsp.preset('recommended')
