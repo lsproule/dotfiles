@@ -20,7 +20,7 @@ return require('packer').startup(function(use)
 
   use('nvim-treesitter/nvim-treesitter', {run = ':TSUpdate'})
 	use('nvim-treesitter/playground')
-	use('mbbill/undotree')	   
+	use('mbbill/undotree')
 	use('tpope/vim-fugitive')
 	use {
 	  'VonHeikemen/lsp-zero.nvim',
@@ -31,7 +31,7 @@ return require('packer').startup(function(use)
 	    {                                      -- Optional
 	      'williamboman/mason.nvim',
 	      run = function()
-		pcall(vim.cmd, 'MasonUpdate')
+		      pcall(vim.cmd, 'MasonUpdate')
 	      end,
 	    },
 	    {'williamboman/mason-lspconfig.nvim'}, -- Optional
@@ -42,7 +42,6 @@ return require('packer').startup(function(use)
 	    {'L3MON4D3/LuaSnip'},     -- Required
 	  }
 	}
-  use({ "iamcco/markdown-preview.nvim", run = "cd app && npm install", setup = function() vim.g.mkdp_filetypes = { "markdown" } end, ft = { "markdown" }, })
 
 
   use {
@@ -67,5 +66,14 @@ return require('packer').startup(function(use)
   --  config = function() require('config.snippets') end,
   }
   use "rafamadriz/friendly-snippets"
+  use( 'yardnsm/vim-import-cost', { run =  'npm install --production' })
+  use({
+    'ckolkey/ts-node-action',
+     requires = { 'nvim-treesitter' },
+     config = function()
+         require("ts-node-action").setup({})
+     end
+  })
+  use {'sotte/presenting.vim'}
 
-end)	  
+end)

@@ -1,7 +1,7 @@
 local lsp = require('lsp-zero').preset({})
 lsp.on_attach(function(client, bufnr)
-  	lsp.default_keymaps({buffer = bufnr})
-
+  lsp.default_keymaps({buffer = bufnr})
+  vim.keymap.set('n', '<space>e', vim.diagnostic.open_float)
 
 	vim.keymap.set("n", "gd", function() vim.lsp.buf.definition() end, opts)
 	vim.keymap.set("i", "<C-h>", function() vim.lsp.buf.signature_help() end, opts)
