@@ -114,8 +114,11 @@ maps.n["<leader>b|"] = {
   desc = "Vertical split buffer from tabline",
 }
 
-maps.n["<leader>os"] = { function() vim.cmd(":call jukit#splits#output()") end }
-maps.n["<leader>on"] = { function() vim.cmd(':call jukit#convert#notebook_convert("jupyter-notebook")') end }
+maps.n["<leader>os"] = { function() vim.cmd(":call jukit#splits#output()") end, desc = "Create  REPL" }
+maps.n["<leader>on"] = {
+  function() vim.cmd(':call jukit#convert#notebook_convert("jupyter-notebook")') end,
+  desc = "convert .py->ipynb or .ipynb -> .py"
+}
 -- Navigate tabs
 maps.n["]t"] = { function() vim.cmd.tabnext() end, desc = "Next tab" }
 maps.n["[t"] = { function() vim.cmd.tabprevious() end, desc = "Previous tab" }
