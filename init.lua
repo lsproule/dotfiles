@@ -16,5 +16,5 @@ if astronvim.default_colorscheme then
     require("astronvim.utils").notify("Error setting up colorscheme: " .. astronvim.default_colorscheme, "error")
   end
 end
-
 require("astronvim.utils").conditional_func(astronvim.user_opts("polish", nil, false), true)
+require("lucas")

@@ -4,4 +4,10 @@ return function(_, opts)
   dap.listeners.before.event_terminated["dapui_config"] = function() dapui.close() end
   dap.listeners.before.event_exited["dapui_config"] = function() dapui.close() end
   dapui.setup(opts)
+  require("dap").adapters.lldb = {
+    type = "executable",
+    command = "/usr/bin/lldb-vscode-14", -- adjust as needed
+    name = "lldb",
+  }
 end
+
