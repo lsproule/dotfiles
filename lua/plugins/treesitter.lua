@@ -1,7 +1,6 @@
 return {
   "nvim-treesitter/nvim-treesitter",
   dependencies = { "windwp/nvim-ts-autotag", "JoosepAlviste/nvim-ts-context-commentstring" },
-  event = "User AstroFile",
   cmd = {
     "TSBufDisable",
     "TSBufEnable",
@@ -28,15 +27,18 @@ return {
       "markdown",
       "markdown_inline",
       "tsx",
+      "typescript",
+      "rust",
       "toml",
       "fish",
       "php",
       "json",
       "yaml",
+      "rust",
       "python",
       "css",
       "html",
-      "lua"
+      "lua",
     },
   },
   config = require "plugins.configs.nvim-treesitter",
