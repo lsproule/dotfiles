@@ -43,12 +43,28 @@ require("transparent").setup {
     "CursorLineNr",
     "EndOfBuffer",
   },
-  extra_groups = { "NeoTreeNormal" },    -- table: additional groups that should be cleared
-  exclude_groups = {},                   -- table: groups you don't want to clear
+  extra_groups = { "NeoTreeNormal" }, -- table: additional groups that should be cleared
+  exclude_groups = {}, -- table: groups you don't want to clear
 }
-vim.o.background = "dark"                -- or "light" for light mode
+
+vim.o.background = "dark" -- or "light" for light mode
 vim.lsp.buf.format { timeout_ms = 9000 } -- 9 seconds
-vim.cmd [[colorscheme gruvbox]]
+vim.cmd.colorscheme "tender"
+vim.cmd.colorscheme "gruvbox"
+vim.cmd.colorscheme "melange"
+vim.g.sexyscroll_update_display_per_milliseconds = 30
+require("notify").setup {
+  background_colour = "#000000",
+}
+require("notify").setup {
+  background_colour = "#000000",
+}
+
+vim.o.background = "dark" -- or "light" for light mode
+vim.lsp.buf.format { timeout_ms = 9000 } -- 9 seconds
+vim.cmd.colorscheme "tender"
+vim.cmd.colorscheme "gruvbox"
+vim.cmd.colorscheme "melange"
 vim.g.sexyscroll_update_display_per_milliseconds = 30
 require("notify").setup {
   background_colour = "#000000",
