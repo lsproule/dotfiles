@@ -10,12 +10,10 @@ for _, source in ipairs {
   local status_ok, fault = pcall(require, source)
   if not status_ok then vim.api.nvim_err_writeln("Failed to load " .. source .. "\n\n" .. fault) end
 end
+require("notify").setup {
+  background_colour = "#000000",
+}
 
-if astronvim.default_colorscheme then
-  if not pcall(vim.cmd.colorscheme, astronvim.default_colorscheme) then
-    require("astronvim.utils").notify("Error setting up colorscheme: " .. astronvim.default_colorscheme, "error")
-  end
-end
 require("astronvim.utils").conditional_func(astronvim.user_opts("polish", nil, false), true)
 require "lucas"
 require("transparent").setup {
@@ -44,28 +42,12 @@ require("transparent").setup {
     "EndOfBuffer",
   },
   extra_groups = { "NeoTreeNormal" }, -- table: additional groups that should be cleared
-  exclude_groups = {}, -- table: groups you don't want to clear
+  exclude_groups = { "notify" },      -- table: groups you don't want to clear
 }
 
-vim.o.background = "dark" -- or "light" for light mode
+vim.o.background = "dark"                -- or "light" for light mode
 vim.lsp.buf.format { timeout_ms = 9000 } -- 9 seconds
 vim.cmd.colorscheme "tender"
 vim.cmd.colorscheme "gruvbox"
 vim.cmd.colorscheme "melange"
-vim.g.sexyscroll_update_display_per_milliseconds = 30
-require("notify").setup {
-  background_colour = "#000000",
-}
-require("notify").setup {
-  background_colour = "#000000",
-}
-
 vim.o.background = "dark" -- or "light" for light mode
-vim.lsp.buf.format { timeout_ms = 9000 } -- 9 seconds
-vim.cmd.colorscheme "tender"
-vim.cmd.colorscheme "gruvbox"
-vim.cmd.colorscheme "melange"
-vim.g.sexyscroll_update_display_per_milliseconds = 30
-require("notify").setup {
-  background_colour = "#000000",
-}
