@@ -1,3 +1,0 @@
-return { {
-  "sotte/presenting.vim",
-} }
