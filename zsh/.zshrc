@@ -124,5 +124,4 @@ alias c="clear"
 alias ls="exa --icons "
 alias x=exit
 
-tmux new
 
