@@ -1,0 +1,6 @@
+require("lucas/packages")
+require("lucas/mason")
+require("lucas/autocommands")
+require("lucas/cmp")
+require("lucas/lua-snip")
+require("lucas/keymaps")
