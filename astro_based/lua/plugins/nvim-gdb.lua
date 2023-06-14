@@ -1,0 +1,4 @@
+return {
+  'sakhnik/nvim-gdb',
+
+}
