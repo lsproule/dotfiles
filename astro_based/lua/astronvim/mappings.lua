@@ -167,13 +167,12 @@ end
 
 -- NeoTree
 if is_available "neo-tree.nvim" then
-  maps.n["<leader>e"] = { "<cmd>Neotree filesystem<cr>", desc = "Toggle Explorer" }
-  maps.n["<leader>n"] = {
+  maps.n["<leader>e"] = {
     function()
       if vim.bo.filetype == "neo-tree" then
         vim.cmd.wincmd "p"
       else
-        vim.cmd.Neotree "focus"
+        vim.cmd.Neotree "filesystem"
       end
     end,
     desc = "Toggle Explorer Focus",

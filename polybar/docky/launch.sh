@@ -12,5 +12,5 @@ while pgrep -u $UID -x polybar >/dev/null; do sleep 1; done
 
 for monitor in  $(xrandr -q | grep " connected" | cut -d ' ' -f1);
 do
-  monitor polybar -q main -c "$DIR"/config.ini &
+   polybar -q main -c "$DIR"/config.ini &
 done
