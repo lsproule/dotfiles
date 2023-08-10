@@ -26,6 +26,7 @@ return {
           preview_cutoff = 120,
         },
 
+        file_ignore_patters = { "node%_modules/.*" },
         mappings = {
           i = {
             ["<C-n>"] = actions.cycle_history_next,
