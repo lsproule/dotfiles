@@ -8,3 +8,7 @@ vim.cmd [[let g:terraform_align=1]]
 vim.keymap.set("n", "<leader>ti", ":!terraform init<CR>")
 vim.keymap.set("n", "<leader>tp", ":!terraform plan<CR>")
 vim.keymap.set("n", "<leader>taa", ":!terraform apply -auto-approve<CR>")
+require("lucas.masonlsp")
+
+
+

@@ -22,7 +22,10 @@ require("lazy").setup({
 	"folke/neodev.nvim",
 	"nvim-tree/nvim-web-devicons",
 	"MunifTanjim/nui.nvim",
-	"nvim-neo-tree/neo-tree.nvim",
+	{
+		"nvim-neo-tree/neo-tree.nvim",
+
+	},
 	{
 		"nvim-treesitter/nvim-treesitter",
 		build = ":TSUpdate",

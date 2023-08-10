@@ -1,3 +1,6 @@
 require("lucas")
 vim.o.termguicolors = true
-vim.cmd.colorscheme("radium")
+
+
+
+--vim.cmd.colorscheme("radium")
