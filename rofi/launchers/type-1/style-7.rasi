@@ -9,7 +9,7 @@
 
 /*****----- Configuration -----*****/
 configuration {
-	modi:                       "drun,run,filebrowser,window";
+	modi:                       "drun,run,window";
     show-icons:                 true;
     display-drun:               " Apps";
     display-run:                " Run";
@@ -24,6 +24,7 @@ configuration {
 @import                          "shared/fonts.rasi"
 
 * {
+    background:                  #00003f;
     border-colour:               var(selected);
     handle-colour:               var(selected);
     background-colour:           var(background);

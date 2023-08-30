@@ -25,7 +25,17 @@ return {
           height = 0.80,
           preview_cutoff = 120,
         },
-
+        vimgrep_arguments = {
+          'rg',
+          '--color=never',
+          '--no-heading',
+          '--with-filename',
+          '--line-number',
+          '--column',
+          '--smart-case',
+          '--ignore-file',
+          '.gitignore'
+        },
         file_ignore_patters = { "node%_modules/.*" },
         mappings = {
           i = {
