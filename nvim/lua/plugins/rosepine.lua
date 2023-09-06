@@ -51,5 +51,7 @@ return {
     })
 
     vim.cmd("colorscheme rose-pine")
+    vim.cmd("hi NonText guifg=bg")
+
   end,
 }

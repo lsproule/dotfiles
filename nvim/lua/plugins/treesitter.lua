@@ -1,1 +1,4 @@
-return {"nvim-treesitter/nvim-treesitter"}
+return {
+  event = "BufEnter",
+  "nvim-treesitter/nvim-treesitter"
+}
