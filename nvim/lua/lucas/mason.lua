@@ -55,11 +55,26 @@ null_ls.setup({
           })
         end,
       })
+      vim.api.nvim_create_autocmd("BufWritePre", {
+        group = "userlspconfig",
+        buffer = bufnr,
+        callback = function()
+          vim.lsp.buf.format({
+            async = true,
+            filter = function(client)
+              -- only use null-ls for formatting instead of lsp server
+              return client.name == "null-ls"
+            end,
+            bufnr = bufnr,
+          })
+        end,
+      })
     end
   end,
 })
 
 require("mason").setup()
+
 require("mason-null-ls").setup({
   ensure_installed = {
     "tsserver",
