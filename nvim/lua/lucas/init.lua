@@ -1,7 +1,4 @@
 require("lucas.packages")
 require("lucas.mason")
-require("lucas.cmp")
-require("lucas.luasnip")
 require("lucas.keymaps")
 require("lucas.options")
-require("lucas.rose")
