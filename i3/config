@@ -116,12 +116,12 @@ gaps outer 10
 exec_always --no-startup-id picom -CGb
 # Define names for default workspaces for which we configure key bindings later on.
 # We use variables to avoid repeating the names in multiple places.
-set $ws1 "1:terminal"
-set $ws2 "2:web"
-set $ws3 "3:games"
-set $ws4 "4:calc"
-set $ws5 "5:media"
-set $ws6 "6:vm"
+set $ws1 "1"
+set $ws2 "2"
+set $ws3 "3"
+set $ws4 "4"
+set $ws5 "5"
+set $ws6 "6"
 set $ws7 "7"
 set $ws8 "8"
 set $ws9 "9"
@@ -155,7 +155,8 @@ bindsym $mod+Shift+0 move container to workspace number $ws10
 bindsym $mod+Shift+c reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym $mod+Shift+r restart
-bindsym $mod+p exec polybar &
+bindsym $mod+p exec polybar example  && polybar hdmi
+
 bindsym $mod+Shift+p exec pkill polybar 
 # exit i3 (logs you out of your X session)
 bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
@@ -189,7 +190,7 @@ mode "resize" {
 bindsym $mod+r mode "resize"
 
 # Start i3bar to display a workspace bar (plus the system information i3status
-exec polybar
+exec polybar example && polybar hdmi
 exec_always --no-startup-id sh ~/bg.sh 
 
 
