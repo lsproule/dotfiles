@@ -4,6 +4,10 @@ local lsps = {
 	"tsserver",
 }
 
+
+
+
+
 require("neodev").setup()
 local null_ls = require("null-ls")
 
@@ -104,9 +108,6 @@ require("mason-lspconfig").setup({
 local lspconfig = require("lspconfig")
 local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
-vim.tbl_map(function(item)
-	lspconfig[item].setup({})
-end, lsps)
 
 lspconfig.tsserver.setup({
 	settings = {
@@ -116,6 +117,11 @@ lspconfig.tsserver.setup({
 	},
 	capabilities = capabilities,
 })
+
+lspconfig.gopls.setup{}
+
+lspconfig.tailwindcss.setup{}
+
 lspconfig.lua_ls.setup {
   on_init = function(client)
     local path = client.workspace_folders[1].name
@@ -141,6 +147,23 @@ lspconfig.lua_ls.setup {
     return true
   end
 }
+
+
+lspconfig.rust_analyzer.setup{
+
+}
+local rt = require("rust-tools")
+
+rt.setup({
+  server = {
+    on_attach = function(_, bufnr)
+      -- Hover actions
+      vim.keymap.set("n", "<C-space>", rt.hover_actions.hover_actions, { buffer = bufnr })
+      -- Code action groups
+      vim.keymap.set("n", "<Leader>a", rt.code_action_group.code_action_group, { buffer = bufnr })
+    end,
+  },
+})
 
 
 vim.keymap.set("n", "<space>ld", vim.diagnostic.open_float)

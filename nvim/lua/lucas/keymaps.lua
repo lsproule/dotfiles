@@ -1,4 +1,5 @@
 vim.g.mapleader = " "
+
 vim.keymap.set("n", "<leader>e", function()
   if vim.bo.filetype == "neo-tree" then
     vim.cmd.wincmd("p")
@@ -38,7 +39,6 @@ vim.keymap.set("n", "<C-j>", [[<Cmd>wincmd j<CR>]])
 vim.keymap.set("n", "<C-k>", [[<Cmd>wincmd k<CR>]])
 vim.keymap.set("n", "<C-l>", [[<Cmd>wincmd l<CR>]])
 
-
 function _G.set_terminal_keymaps()
   local opts = { buffer = 0 }
   vim.keymap.set("t", "<esc>", [[<C-\><C-n>]], opts)
@@ -50,4 +50,22 @@ function _G.set_terminal_keymaps()
   vim.keymap.set("t", "<C-w>", [[<C-\><C-n><C-w>]], opts)
 end
 
--- if you only want these mappings for toggle term use term://*toggleterm#* instead
+local slide = require("slide")
+vim.keymap.set({ "n", "v" }, "<leader>k", slide.up)
+vim.keymap.set({ "n", "v" }, "<leader>j", slide.down)
+
+vim.keymap.set("n", "<leader>ts", function()
+  vim.cmd("TSPlaygroundToggle")
+end)
+
+vim.keymap.set("n", "<leader>sh", function()
+  vim.cmd("split")
+end)
+vim.keymap.set("n", "<leader>sv", function()
+  vim.cmd("vsplit")
+end)
+
+--DadBod
+vim.keymap.set("n", "sd", function()
+  vim.cmd(":DB ")
+end)
