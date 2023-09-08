@@ -114,7 +114,7 @@ bindsym $mod+a focus parent
 # focus the child container
 #bindsym $mod+d focus child
 gaps inner 5
-gaps outer 5 
+gaps outer 10 
 exec_always --no-startup-id picom -CGb
 # Define names for default workspaces for which we configure key bindings later on.
 # We use variables to avoid repeating the names in multiple places.
@@ -161,7 +161,7 @@ bindsym $mod+p exec polybar example  && polybar hdmi
 
 bindsym $mod+Shift+p exec pkill polybar 
 # exit i3 (logs you out of your X session)
-bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
+#bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
 
 bindsym $mod+Shift+m exec rofi  feh --bg-scale ~/backgrounds/$(ls ~/backgrounds/ | shuf -n 1)
 # resize window (you can also use the mouse for that)
