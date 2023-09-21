@@ -2,12 +2,39 @@ return {
   {
     event = "BufEnter",
     "nvim-treesitter/nvim-treesitter",
-
+    config = function()
+      require("nvim-treesitter.configs").setup({
+        modules = {},
+        sync_install = false,
+        ensure_installed = {},
+        ignore_install = {},
+        auto_install = false,
+        autotag = {
+          enable = true,
+          enable_rename = true,
+          enable_close = true,
+          enable_close_on_slash = true,
+          filetypes = { "html", "xml" },
+        },
+      })
+    end,
   },
   {
     "nvim-treesitter/playground",
     config = function()
       require("nvim-treesitter.configs").setup({
+        modules = {},
+        sync_install = false,
+        ensure_installed = {},
+        ignore_install = {},
+        auto_install = false,
+        autotag = {
+          enable = true,
+          enable_rename = true,
+          enable_close = true,
+          enable_close_on_slash = true,
+          filetypes = { "html", "xml" },
+        },
         playground = {
           enable = true,
           disable = {},

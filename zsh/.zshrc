@@ -14,11 +14,11 @@ export ZSH="$HOME/.oh-my-zsh"
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
-ZSH_THEME="powerlevel10k/powerlevel10k"
+ZSH_THEME="robbyrussell"
 
 source $ZSH/oh-my-zsh.sh
-source ~/kube-ps1/kube-ps1.sh
-export PROMPT=$(kube_ps1)$PROMPT
+#source ~/kube-ps1/kube-ps1.sh
+#export PROMPT=$(kube_ps1)$PROMPT
 KUBE_PS1_SYMBOL_USE_IMG=false
 KUBE_PS1_SYMBOL_ENABLE=false
 
@@ -128,10 +128,13 @@ alias wrk="cd ~/wrk/"
 alias pbcopy="xclip -sel clip"
 alias luamake=/home/lucas/lua-language-server/3rd/luamake/luamake
 alias c="clear"
-alias ls="exa --icons "
+#alias ls="exa --icons "
 alias x=exit
-
+alias ff=". ranger && nvim ."
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
 [ -f "/home/lucas/.ghcup/env" ] && source "/home/lucas/.ghcup/env" # ghcup-env
+export ANDROID_HOME=$HOME/Android/Sdk
+export PATH=$PATH:$ANDROID_HOME/emulator
+export PATH=$PATH:$ANDROID_HOME/platform-tools

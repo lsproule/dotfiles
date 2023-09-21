@@ -21,7 +21,10 @@ return {
     highlight = { enable = true },
     incremental_selection = { enable = true },
     indent = { enable = true },
-    autotag = { enable = true },
+    autotag = {
+      enable = true,
+      enable_rename = true,
+    },
     context_commentstring = { enable = true, enable_autocmd = false },
     ensure_installed = {
       "markdown",
@@ -41,5 +44,5 @@ return {
       "lua",
     },
   },
-  config = require "plugins.configs.nvim-treesitter",
+  config = require("plugins.configs.nvim-treesitter"),
 }
