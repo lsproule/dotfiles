@@ -1,14 +1,3 @@
-
-local lsps = {
-	"pylsp",
-	"tsserver",
-}
-
-
-
-
-
-require("neodev").setup()
 local null_ls = require("null-ls")
 
 null_ls.setup({})
@@ -87,7 +76,7 @@ require("mason-null-ls").setup({
 	},
 	handlers = {
 		function() end, -- disables automatic setup of all null-ls sources
-		stylua = function(source_name, methods)
+		stylua = function()
 			null_ls.register(null_ls.builtins.formatting.stylua)
 		end,
 		shfmt = function(source_name, methods)
@@ -109,22 +98,48 @@ local lspconfig = require("lspconfig")
 local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
 
-lspconfig.tsserver.setup({
-	settings = {
-		completions = {
-			completeFunctionCalls = true,
-		},
-	},
-	capabilities = capabilities,
+
+vim.keymap.set("n", "<leader>ld", vim.diagnostic.open_float)
+vim.keymap.set("n", "[d", vim.diagnostic.goto_prev)
+vim.keymap.set("n", "]d", vim.diagnostic.goto_next)
+vim.keymap.set("n", "<leader>q", vim.diagnostic.setloclist)
+
+vim.api.nvim_create_autocmd("LspAttach", {
+	group = vim.api.nvim_create_augroup("userlspconfig", {}),
+	callback = function(ev)
+		local opts = { buffer = ev.buf }
+		vim.keymap.set("n", "gD", vim.lsp.buf.declaration, opts)
+		vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts)
+		vim.keymap.set("n", "gk", vim.lsp.buf.hover, opts)
+		vim.keymap.set("n", "<C-f>", function()
+			vim.lsp.buf.format({ async = true })
+		end, opts)
+		vim.keymap.set("n", "gi", vim.lsp.buf.implementation, opts)
+		vim.keymap.set("n", "<leader>lh", vim.lsp.buf.signature_help, opts)
+		vim.keymap.set("n", "<leader>wa", vim.lsp.buf.add_workspace_folder, opts)
+		vim.keymap.set("n", "<leader>wr", vim.lsp.buf.remove_workspace_folder, opts)
+		vim.keymap.set("n", "<leader>wl", function()
+			print(vim.inspect(vim.lsp.buf.list_workleader_folders()))
+		end, opts)
+		vim.keymap.set("n", "<leader>d", vim.lsp.buf.type_definition, opts)
+		vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, opts)
+		vim.keymap.set({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, opts)
+		vim.keymap.set("n", "gr", vim.lsp.buf.references, opts)
+		vim.keymap.set("n", "<leader>p", function()
+			vim.lsp.buf.format({ async = true })
+		end, opts)
+
+		--vim.api.nvim_create_autocmd("InsertLeave", { group = "userlspconfig", callback = vim.lsp.buffer.format})
+	end,
 })
 
-lspconfig.gopls.setup{}
 
-lspconfig.tailwindcss.setup{}
+
+
 
 lspconfig.lua_ls.setup {
   on_init = function(client)
-    local path = client.workspace_folders[1].name
+    local path = client.workleader_folders[1].name
     if not vim.loop.fs_stat(path..'/.luarc.json') and not vim.loop.fs_stat(path..'/.luarc.jsonc') then
       client.config.settings = vim.tbl_deep_extend('force', client.config.settings, {
         Lua = {
@@ -134,7 +149,7 @@ lspconfig.lua_ls.setup {
             version = 'LuaJIT'
           },
           -- Make the server aware of Neovim runtime files
-          workspace = {
+          workleader = {
             checkThirdParty = false,
             -- or pull in all of 'runtimepath'. NOTE: this is a lot slower
             library = vim.api.nvim_get_runtime_file("", true)
@@ -142,61 +157,41 @@ lspconfig.lua_ls.setup {
         }
       })
 
-      client.notify("workspace/didChangeConfiguration", { settings = client.config.settings })
+      client.notify("workleader/didChangeConfiguration", { settings = client.config.settings })
     end
     return true
   end
 }
 
+lspconfig.tsserver.setup({
+	settings = {
+		completions = {
+			completeFunctionCalls = true,
+		},
+	},
+	capabilities = capabilities,
+})
 
-lspconfig.rust_analyzer.setup{
 
-}
+
 local rt = require("rust-tools")
 
 rt.setup({
   server = {
     on_attach = function(_, bufnr)
       -- Hover actions
-      vim.keymap.set("n", "<C-space>", rt.hover_actions.hover_actions, { buffer = bufnr })
+      vim.keymap.set("n", "<leader>la", rt.hover_actions.hover_actions, { buffer = bufnr })
       -- Code action groups
       vim.keymap.set("n", "<Leader>a", rt.code_action_group.code_action_group, { buffer = bufnr })
     end,
   },
-})
+}
+)
 
 
-vim.keymap.set("n", "<space>ld", vim.diagnostic.open_float)
-vim.keymap.set("n", "[d", vim.diagnostic.goto_prev)
-vim.keymap.set("n", "]d", vim.diagnostic.goto_next)
-vim.keymap.set("n", "<space>q", vim.diagnostic.setloclist)
 
-vim.api.nvim_create_autocmd("LspAttach", {
-	group = vim.api.nvim_create_augroup("userlspconfig", {}),
-	callback = function(ev)
-		local opts = { buffer = ev.buf }
-		vim.keymap.set("n", "gd", vim.lsp.buf.declaration, opts)
-		vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts)
-		vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts)
-		vim.keymap.set("n", "gk", vim.lsp.buf.hover, opts)
-		vim.keymap.set("n", "<C-f>", function()
-			vim.lsp.buf.format({ async = true })
-		end, opts)
-		vim.keymap.set("n", "gi", vim.lsp.buf.implementation, opts)
-		vim.keymap.set("n", "<c-k>", vim.lsp.buf.signature_help, opts)
-		vim.keymap.set("n", "<space>wa", vim.lsp.buf.add_workspace_folder, opts)
-		vim.keymap.set("n", "<space>wr", vim.lsp.buf.remove_workspace_folder, opts)
-		vim.keymap.set("n", "<space>wl", function()
-			print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
-		end, opts)
-		vim.keymap.set("n", "<space>d", vim.lsp.buf.type_definition, opts)
-		vim.keymap.set("n", "<space>rn", vim.lsp.buf.rename, opts)
-		vim.keymap.set({ "n", "v" }, "<space>ca", vim.lsp.buf.code_action, opts)
-		vim.keymap.set("n", "gr", vim.lsp.buf.references, opts)
-		vim.keymap.set("n", "<leader>p", function()
-			vim.lsp.buf.format({ async = true })
-		end, opts)
-
-		--vim.api.nvim_create_autocmd("InsertLeave", { group = "userlspconfig", callback = vim.lsp.buffer.format})
-	end,
-})
+for _, server in ipairs({"clangd",  "cssls","tailwindcss","pylsp", "gopls","rust_analyzer", "bashls", "emmet_ls", "graphql", "html", "prismals" }) do
+  lspconfig[server].setup({
+    capabilities = capabilities,
+  })
+end

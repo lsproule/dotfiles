@@ -157,13 +157,13 @@ bindsym $mod+Shift+0 move container to workspace number $ws10
 bindsym $mod+Shift+c reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym $mod+Shift+r restart
-bindsym $mod+p exec polybar example  && polybar hdmi
+bindsym $mod+p exec polybar -c ~/.config/polybar/config.ini example && polybar -c ~/.confg/polybar/config.ini hdmi
 
 bindsym $mod+Shift+p exec pkill polybar 
 # exit i3 (logs you out of your X session)
 #bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
 
-bindsym $mod+Shift+m exec rofi  feh --bg-scale ~/backgrounds/$(ls ~/backgrounds/ | shuf -n 1)
+bindsym $mod+Shift+m exec feh --randomize --bg-fill $HOME/backgrounds 
 # resize window (you can also use the mouse for that)
 mode "resize" {
         # These bindings trigger as soon as you enter the resize mode
@@ -192,7 +192,8 @@ mode "resize" {
 bindsym $mod+r mode "resize"
 
 # Start i3bar to display a workspace bar (plus the system information i3status
-exec polybar example && polybar hdmi
-exec_always --no-startup-id sh ~/bg.sh 
+exec polybar -c ~/.config/polybar/config.ini example && polybar -c ~/.confg/polybar/config.ini hdmi
+exec_always pkill -f bg.sh
+exec_always ~/scripts/bg.sh
 
 
