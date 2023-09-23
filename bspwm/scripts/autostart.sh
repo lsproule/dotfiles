@@ -10,20 +10,23 @@ xsetroot -cursor_name left_ptr
 picom -b
 xrdb -merge $HOME/.Xresources
 
-# notification manager
-dunst &
-
-# Wallpaper
-feh --bg-scale $HOME/.config/bspwm/wallpapers/wallpaper.jpg
-
-bash $HOME/.config/polybar/launch.sh --docky
-# don't remove this please
-pkill bspc
-pkill eww
-
 launch_sxhkd() {
 	sxhkd &
 }
 
+
+# notification manager
+launch_sxhkd
+dunst &
+
+# Wallpaper
+pkill polybar
+polybar -c $HOME/.config/polybar/config.ini example &  
+polybar -c $HOME/.config/polybar/config.ini hdmi &
+# don't remove this please
+pkill bspc
+pkill eww
+
+$HOME/scripts/bg.sh &
 pkill sxhkd
 launch_sxhkd

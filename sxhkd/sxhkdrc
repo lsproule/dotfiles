@@ -1,4 +1,4 @@
-#
+
 # wm independent hotkeys
 #
 
@@ -8,27 +8,30 @@ super + Return
 
 # program launcher
 super + space 
-  rofi -show drun -theme "$HOME/.config/rofi/launchers/type-6/style-2.rasi"
+  exec $HOME/.config/rofi/launcher.sh
 
 # make sxhkd reload its configuration files:
 super + Escape
-  pkill -USR1 -x sxhkd
+  pkill  -x sxhkd && sxhkd &
 
 #
 # bspwm hotkeys
 #
 super + p
-    bash $HOME/.config/polybar/launch.sh --docky & 2>&1
+    polybar -c ~/.config/polybar/config.ini example && polybar -c ~/.config/polybar/config.init hdmi 
+super + shift +p
+    pkill polybar
 
 super + m
-    bash $HOME/.config/rofi/powermenu/type-5/powermenu.sh
+    bash $HOME/.config/sxhkd/scripts/powermenu.sh
 
+super
 # quit/restart bspwm
-super + shift + esc 
-    bspc quit
+super + shift + Escape
+    bspwm quit
 
 # close and kill
-super + {_,shift + }w
+super + {_,shift + }q
     bspc node -{c,k}
 
 # alternate between the tiled and monocle layout
@@ -44,7 +47,7 @@ super + y
 
 # swap the current node and the biggest node
 super + g
-    bspc node -s biggest
+     exec bsp-layout set $(bsp-layout layouts | rofi -dmenu -p "Select layout")) 
 
 #
 # state/flags
