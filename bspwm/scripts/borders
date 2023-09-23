@@ -4,8 +4,7 @@
 #
 # Yes, this is stolen from gk.
 
-trap 'bspc config border_width 0; kill -9 -$$' INT TERM
-
+trap 'bspc config border_width 0; bspc config border_radius 10; kill -9 -$$' INT TERM
 targets() {
 	case $1 in
 	focused) bspc query -N -n .local.focused.\!fullscreen ;;

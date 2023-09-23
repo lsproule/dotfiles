@@ -128,7 +128,7 @@ alias wrk="cd ~/wrk/"
 alias pbcopy="xclip -sel clip"
 alias luamake=/home/lucas/lua-language-server/3rd/luamake/luamake
 alias c="clear"
-#alias ls="exa --icons "
+alias ls="eza --icons "
 alias x=exit
 alias ff=". ranger && nvim ."
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
