@@ -78,3 +78,8 @@ vim.keymap.set("n", "vip", "<Cmd>lua require('lucas.helper').select()<CR>", { de
 vim.keymap.set("n","<leader>hu",function() require("harpoon.ui").toggle_quick_menu()end, { desc = "Harpoon UI" })
 vim.keymap.set("n","<leader>ha",function() require("harpoon.mark").add_file() end, { desc = "Harpoon add file" })
 
+vim.keymap.set("n", "<leader>rt", function ()
+  vim.cmd("ReplToggle")
+end) 
+vim.keymap.set("n", "<leader>rr",function() vim.cmd("ReplSendLine")end)
+vim.keymap.set("v","<leader>rr", function() vim.cmd("ReplSendVisual")end)
