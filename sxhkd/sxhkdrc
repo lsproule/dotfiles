@@ -7,7 +7,7 @@ super + Return
     kitty
 
 # program launcher
-super + space 
+super + @space 
   exec $HOME/.config/rofi/launcher.sh
 
 # make sxhkd reload its configuration files:
@@ -19,19 +19,21 @@ super + Escape
 #
 super + p
     polybar -c ~/.config/polybar/config.ini example && polybar -c ~/.config/polybar/config.init hdmi 
-super + shift +p
+super + shift + p
     pkill polybar
 
 super + m
     bash $HOME/.config/sxhkd/scripts/powermenu.sh
 
-super
+super + s
+  exec bsp-layout set $(bsp-layout layouts | rofi -dmenu -theme $HOME/.config/rofi/launchers/type-1/style-7.rasi)
+
 # quit/restart bspwm
 super + shift + Escape
     bspwm quit
 
 # close and kill
-super + {_,shift + }q
+super + {_,shift + } q
     bspc node -{c,k}
 
 # alternate between the tiled and monocle layout
@@ -102,10 +104,6 @@ super + {_,shift + }{1-9,0}
 # preselect
 #
 
-# preselect the direction
-super + ctrl + super + {Left,Down,Up,Right}
-    bspc node -p {west,south,north,east}
-
 
 # preselect the ratio
 super + ctrl + {1-9}
@@ -134,10 +132,14 @@ super + ctrl + super + space
 # move a floating window
 super + ctrl + {h,j,k,l}
     bspc node -v {-20 0,0 20,0 -20,20 0}
-
+super + ctrl + {Left,Down,Up,Right}
+    bspc node -v {-20 0,0 20,0 -20,20 0}
 # Custom move/resize
 super + alt + {h,j,k,l}
     ~/.config/bspwm/scripts/bspwm_resize {west,south,north,east}
+super + alt + {Left,Down,Up,Right}
+    ~/.config/bspwm/scripts/bspwm_resize {west,south,north,east}
+
 
 super + b
     google-chrome 
@@ -147,3 +149,7 @@ super + x
 
 super + m
   ~/.local/bin/mode toggle
+super + s
+  exec bsp-layout set $(bsp-layout layouts | rofi -dmenu -theme $HOME/.config/rofi/launchers/type-1/style-7.rasi)
+
+
