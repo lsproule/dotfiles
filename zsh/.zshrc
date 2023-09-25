@@ -88,6 +88,7 @@ plugins=(
 	zsh-syntax-highlighting 
 	zsh-autosuggestions
 	fast-syntax-highlighting 
+  zoxide
 	tmux
 )
 source $ZSH/oh-my-zsh.sh
@@ -129,6 +130,7 @@ alias pbcopy="xclip -sel clip"
 alias luamake=/home/lucas/lua-language-server/3rd/luamake/luamake
 alias c="clear"
 alias ls="eza --icons "
+alias cd="z"
 alias x=exit
 alias ff=". ranger && nvim ."
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
@@ -138,3 +140,4 @@ alias ff=". ranger && nvim ."
 export ANDROID_HOME=$HOME/Android/Sdk
 export PATH=$PATH:$ANDROID_HOME/emulator
 export PATH=$PATH:$ANDROID_HOME/platform-tools
+export EDITOR="nvim"
