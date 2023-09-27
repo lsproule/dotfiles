@@ -192,7 +192,7 @@ rt.setup({
 
 
 
-for _, server in ipairs({"clangd",  "cssls","tailwindcss","pylsp", "gopls","rust_analyzer", "bashls", "emmet_ls", "graphql", "html", "prismals", "bashls" }) do
+for _, server in ipairs({"clangd", "yamlls",  "cssls","tailwindcss","pylsp", "gopls","rust_analyzer",  "bashls","cmake", "emmet_ls", "graphql", "html", "prismals", "bashls" }) do
   lspconfig[server].setup({
     capabilities = capabilities,
   })
