@@ -28,5 +28,6 @@ pkill bspc
 pkill eww
 
 $HOME/scripts/bg.sh &
+pkill -f bg.sh
 pkill sxhkd
 launch_sxhkd

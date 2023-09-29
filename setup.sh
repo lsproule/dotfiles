@@ -1,4 +1,4 @@
-ln -s $HOME/dotfiles/tmux/.zshrc $HOME/.zshrc
+ln -s $HOME/dotfiles/zsh/.zshrc $HOME/.zshrc
 ln -s $HOME/dotfiles/tmux/.tmux.conf $HOME/.tmux.conf
 
 mkdir -p $HOME/.config

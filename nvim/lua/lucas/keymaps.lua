@@ -68,6 +68,13 @@ vim.keymap.set("n", "vip", "<Cmd>lua require('lucas.helper').select()<CR>", { de
 
 vim.keymap.set("v","<C-c>", ":w ! pbcopy<CR>")
 
+
+vim.keymap.set("n", "<leader>/", "<Cmd>CommentToggle<CR>", { desc = "Comment" })
+vim.keymap.set("v", "<leader>/", function ()
+  require('nvim_comment').comment_range(true)
+  
+end, { desc = "Comment" })
+
 -- harpoon
 vim.keymap.set("n", "<leader>hu", function()
   require("harpoon.ui").toggle_quick_menu()

@@ -7,7 +7,12 @@ return {
     require("bufferline").setup({
       options = {
         offsets = {
-          seperator = true,
+          {
+            filetype = "neo-tree",
+            text = "filesystem",
+            separator = true,
+            text_align = "left",
+          },
         },
         diagnostics = "nvim_lsp",
         numbers = "buffer_id",
