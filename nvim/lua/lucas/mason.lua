@@ -190,33 +190,7 @@ rt.setup({
 }
 )
 
-lspconfig.cssls.setup({
-  capabilities = capabilities,
-  settings = {
-    css = {
-      validate = true,
-      lint = {
-        unknownAtRules = "ignore",
-      },
-
-    },
-    scss = {
-      validate = true,
-      lint = {
-        unknownAtRules = "ignore",
-      },
-    },
-    less = {
-      validate = true,
-      lint = {
-        unknownAtRules = "ignore",
-      },
-    },
-  }
-})
-
-
-for _, server in ipairs({"clangd", "yamlls",  "tailwindcss","pylsp", "gopls","rust_analyzer",  "bashls","cmake", "emmet_ls", "graphql", "html", "prismals", "bashls" }) do
+for _, server in ipairs({"clangd", "yamlls",  "tailwindcss","pylsp", "gopls","rust_analyzer",  "bashls","cmake", "emmet_ls", "graphql", "html", "prismals", "bashls", "zls" }) do
   lspconfig[server].setup({
     capabilities = capabilities,
   })

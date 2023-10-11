@@ -7,6 +7,13 @@ vim.keymap.set("n", "<leader>e", function()
     vim.cmd("Neotree source=filesystem reveal_force_cwd position=left")
   end
 end, { desc = "Toggle Explorer Focus" })
+vim.keymap.set("n", "<leader>w", function()
+  if vim.bo.filetype == "neo-tree" then
+    vim.cmd.wincmd("p")
+  else
+    vim.cmd("Neotree source=git-status reveal_force_cwd position=left")
+  end
+end, { desc = "Toggle Explorer Focus" })
 
 vim.keymap.set("n", "<C-Up>", function()
   vim.cmd("horizontal resize -10")
@@ -30,10 +37,6 @@ vim.keymap.set("n", "<leader>tf", function()
   vim.cmd("ToggleTerm direction=float")
 end, { desc = "Toggle floating Terminal" })
 
-vim.keymap.set("n", "<leader>h", [[<Cmd>wincmd h<CR>]], { desc = "Move left" })
-vim.keymap.set("n", "<leader>j", [[<Cmd>wincmd j<CR>]], { desc = "Move down" })
-vim.keymap.set("n", "<leader>k", [[<Cmd>wincmd k<CR>]], { desc = "Move up" })
-vim.keymap.set("n", "<leader>l", [[<Cmd>wincmd l<CR>]], { desc = "Move right" })
 vim.keymap.set("n", "<C-h>", [[<Cmd>wincmd h<CR>]], { desc = "Move left" })
 vim.keymap.set("n", "<C-j>", [[<Cmd>wincmd j<CR>]], { desc = "Move down" })
 vim.keymap.set("n", "<C-k>", [[<Cmd>wincmd k<CR>]], { desc = "Move up" })

@@ -1,4 +1,5 @@
 !colors/astronvim.lua
+*/lazy.nvim
 colors/*
 docs
 ginit.vim
