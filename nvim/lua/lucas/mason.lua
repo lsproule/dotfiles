@@ -174,6 +174,11 @@ lspconfig.tsserver.setup({
 	capabilities = capabilities,
 })
 
+lspconfig.zls.setup({
+  capabilities = capabilities,
+  cmd = { "zls" },
+  filetypes = { "zig", "zir" },
+})
 
 
 local rt = require("rust-tools")
@@ -190,7 +195,7 @@ rt.setup({
 }
 )
 
-for _, server in ipairs({"clangd", "yamlls",  "tailwindcss","pylsp", "gopls","rust_analyzer",  "bashls","cmake", "emmet_ls", "graphql", "html", "prismals", "bashls", "zls" }) do
+for _, server in ipairs({"clangd", "yamlls",  "tailwindcss","pylsp", "gopls","rust_analyzer",  "bashls","cmake", "emmet_ls", "graphql", "html", "prismals", "bashls" }) do
   lspconfig[server].setup({
     capabilities = capabilities,
   })

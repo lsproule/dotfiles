@@ -13,6 +13,4 @@ vim.opt.relativenumber = true
 vim.opt.number = true
 vim.cmd("set nowrap")
 
-vim.g.LanguageClient_serverCommands = {
-  zig = "/usr/bin/zls",
-}
+
