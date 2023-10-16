@@ -73,10 +73,7 @@ vim.keymap.set("v","<C-c>", ":w ! pbcopy<CR>")
 
 
 vim.keymap.set("n", "<leader>/", "<Cmd>CommentToggle<CR>", { desc = "Comment" })
-vim.keymap.set("v", "<leader>/", function ()
-  require('nvim_comment').comment_range(true)
-  
-end, { desc = "Comment" })
+vim.keymap.set("v", "<leader>/", "<Cmd>CommentToggle<CR>", { desc = "Comment" })
 
 -- harpoon
 vim.keymap.set("n", "<leader>hu", function()

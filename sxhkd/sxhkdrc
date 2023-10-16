@@ -6,6 +6,8 @@
 super + Return
     kitty
 
+super+shift+m
+  exec feh --randomize --bg-fill $HOME/backgrounds 
 # program launcher
 super + @space 
   exec $HOME/.config/rofi/launcher.sh

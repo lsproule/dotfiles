@@ -29,5 +29,6 @@ pkill eww
 
 $HOME/scripts/bg.sh &
 pkill -f bg.sh
+./cleanfullsrceen &
 pkill sxhkd
 launch_sxhkd
