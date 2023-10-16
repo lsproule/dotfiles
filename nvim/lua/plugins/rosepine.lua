@@ -50,7 +50,7 @@ return {
       },
     })
 
-    vim.cmd("colorscheme rose-pine")
-    vim.cmd("hi  Normal guibg=#0F0F20")
+    -- vim.cmd("colorscheme rose-pine")
+    -- vim.cmd("hi  Normal guibg=#0F0F20")
   end,
 }

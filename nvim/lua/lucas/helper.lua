@@ -12,13 +12,11 @@ local get_master_node = function()
   local start_row = node:start()
   local parent = node:parent()
   while parent ~= nil and parent:start() == start_row do
-    if parent == root then
-      break
-    end
     node = parent
     parent = node:parent()
   end
   return node
+
 end
 
 M.select = function()
