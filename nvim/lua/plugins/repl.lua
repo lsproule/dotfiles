@@ -8,7 +8,7 @@ return {
       vim.g.repl_height = 10
       vim.g.repl_filetype_commands = {
         javascript = "node",
-        python     = "ipython --no-autoindent",
+        python     = "ipython --no-autoindent --matplotlib=gtk4",
         lua        = "lua",
         sh         = "bash",
         c          = "clang_repl",
