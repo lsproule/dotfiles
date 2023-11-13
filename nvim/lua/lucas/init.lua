@@ -1,6 +1,6 @@
 require("lucas.packages")
 require("lucas.mason")
 require("lucas.keymaps")
-require("lucas.colorscheme")
 require("lucas.dap_config")
 require("lucas.options")
+require("lucas.colorscheme")
