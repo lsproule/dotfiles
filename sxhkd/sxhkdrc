@@ -144,7 +144,7 @@ super + alt + {Left,Down,Up,Right}
 
 
 super + b
-    google-chrome 
+    firefox 
 
 super + x
   ~/.local/bin/xcolor-pick

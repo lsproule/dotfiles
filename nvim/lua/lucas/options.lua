@@ -4,6 +4,13 @@ vim.opt.expandtab = true
 vim.opt.scrolloff = 6
 vim.bo.softtabstop = 2
 vim.opt.swapfile = false
+vim.opt.listchars = {
+  tab = "| ",
+  trail = "·",
+  extends = "…",
+  precedes = "…"
+}
+vim.opt.list = true
 
 vim.opt.termguicolors = true
 
