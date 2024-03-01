@@ -88,7 +88,10 @@ plugins=(
 	zsh-syntax-highlighting 
 	zsh-autosuggestions
 	fast-syntax-highlighting 
+  zsh-completions
   zoxide
+  kube-ps1
+  kubectl
 	tmux
 )
 source $ZSH/oh-my-zsh.sh
@@ -135,9 +138,44 @@ alias x=exit
 alias ff=". ranger && nvim ."
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
-
+alias lobster="lobster -p Vidcloud "
 [ -f "/home/lucas/.ghcup/env" ] && source "/home/lucas/.ghcup/env" # ghcup-env
 export ANDROID_HOME=$HOME/Android/Sdk
 export PATH=$PATH:$ANDROID_HOME/emulator
 export PATH=$PATH:$ANDROID_HOME/platform-tools
 export EDITOR="nvim"
+alias tm="tmux"
+alias tma="tmux a -t "
+alias oil="nvim +Oil"
+alias db="nvim +DBUI"
+alias woman='vim +"Telescope man_pages sections=1,2,3,4,5,6,7,8,9"'
+#hayabusa
+PROMPT='$(kube_ps1)'$PROMPT # or RPROMPT='$(kube_ps1)'
+
+autoload -U compinit && compinit
+source ~/venv/bin/activate
+export PATH=$PATH:$HOME/.cargo/bin:$PATH
+LUA=/usr/include/lua5.4
+LUAINC=/usr/include/lua5.4
+LUALIB=/usr/lib/lua/5.4
+LUABIN=/usr/bin
+export MODULAR_HOME="$HOME/.modular"
+export PATH="$MODULAR_HOME/pkg/packages.modular.com_mojo/bin:$PATH"
+
+export PATH=$HOME/.asdf/bin:$PATH
+. "$HOME/.asdf/asdf.sh"
+fpath=(${ASDF_DIR}/completions $fpath)
+# initialise completions with ZSH's compinit
+autoload -Uz compinit && compinit
+#[[ $commands[kubectl] ]] && source <(rustup completions zsh)
+[[ $commands[kubectl] ]] && source <(kubectl completion zsh)
+[[ $commands[kubectl] ]] && source <(helm completion zsh)
+unsetopt BEEP
+
+# Wasmer
+export WASMER_DIR="/home/lucas/.wasmer"
+[ -s "$WASMER_DIR/wasmer.sh" ] && source "$WASMER_DIR/wasmer.sh"
+
+export WASMTIME_HOME="$HOME/.wasmtime"
+
+export PATH="$WASMTIME_HOME/bin:$PATH"

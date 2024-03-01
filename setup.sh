@@ -9,3 +9,5 @@ ln -s $HOME/dotfiles/sxhkd $HOME/.config/sxhkd
 ln -s $HOME/dotfiles/bspwm $HOME/.config/bspwm
 ln -s $HOME/dotfiles/polybar $HOME/.config/polybar
 ln -s $HOME/dotfiles/picom $HOME/.config/picom
+
+

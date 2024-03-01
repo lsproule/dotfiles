@@ -1,1 +1,5 @@
-return {"simrat39/rust-tools.nvim"}
+return {
+  'mrcjkb/rustaceanvim',
+  version = '^4', -- Recommended
+  ft = { 'rust' },
+} 
