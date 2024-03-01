@@ -11,9 +11,9 @@ vim.opt.listchars = {
   precedes = "…"
 }
 vim.opt.list = true
-
 vim.opt.termguicolors = true
-
+vim.o.laststatus = 3
+vim.o.cmdheight=1
 vim.opt.undodir = os.getenv("HOME") .. "/.vim/undodir"
 vim.opt.undofile = true
 vim.opt.wrap = false

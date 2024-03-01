@@ -7,6 +7,9 @@ vim.keymap.set("n", "<leader>e", function()
 		vim.cmd("Neotree source=filesystem reveal_force_cwd position=left")
 	end
 end, { desc = "Toggle Explorer Focus" })
+
+--vim.keymap.set("n", "<leader>e", require("telescope.builtin").find_files, { desc = "Find Files" })
+
 vim.keymap.set("n", "<leader>w", function()
 	if vim.bo.filetype == "neo-tree" then
 		vim.cmd.wincmd("p")
@@ -14,6 +17,14 @@ vim.keymap.set("n", "<leader>w", function()
 		vim.cmd("Neotree source=git-status reveal_force_cwd position=left")
 	end
 end, { desc = "Toggle Explorer Focus" })
+
+-- split screen
+vim.keymap.set("n", "<leader>\\", function()
+  vim.cmd("vsplit")
+end, { desc = "Split horizontally" })
+vim.keymap.set("n", "<leader>-", function()
+  vim.cmd("split")
+end, { desc = "Split vertically" })
 
 vim.keymap.set("n", "<C-Up>", function()
 	vim.cmd("horizontal resize -10")
@@ -41,6 +52,20 @@ vim.keymap.set("n", "<C-h>", [[<Cmd>wincmd h<CR>]], { desc = "Move left" })
 vim.keymap.set("n", "<C-j>", [[<Cmd>wincmd j<CR>]], { desc = "Move down" })
 vim.keymap.set("n", "<C-k>", [[<Cmd>wincmd k<CR>]], { desc = "Move up" })
 vim.keymap.set("n", "<C-l>", [[<Cmd>wincmd l<CR>]], { desc = "Move right" })
+
+
+vim.keymap.set({ "n", "v", "i" }, "<F2>", function()
+	require("knap").process_once()
+end, { desc = "Process and refresh latex" })
+vim.keymap.set({ "n", "v", "i" }, "<F3>", function()
+	require("knap").close_viewer()
+end, { desc = "Close viewer" })
+vim.keymap.set({ "n", "v", "i" }, "<F4>", function()
+	require("knap").toggle_autopreviewing()
+end, { desc = "Autoprocessing" })
+vim.keymap.set({ "n", "v", "i" }, "<F5>", function()
+	require("knap").forward_jump()
+end, { desc = "SyncTeX" })
 
 vim.keymap.set({ "n", "i", "v" , "t" }, "<esc>", [[<C-\><C-n>]])
 vim.keymap.set("t", "<esc>", [[<C-\><C-n>]])
@@ -80,6 +105,11 @@ vim.keymap.set("v", "<leader>q", function()
 	-- vim.cmd(start_line .. "," .. end_line .. " w ! xargs echo")
 end
 )
+
+-- Copilot
+vim.keymap.set("n", "<leader>cp", function()
+  vim.cmd("Copilot toggle")
+end, { desc = "toggle Copilot" })
 
 vim.keymap.set("v", "<leader>y", 'y+"' , { desc = "Copy to clipboard" })
 -- harpoon

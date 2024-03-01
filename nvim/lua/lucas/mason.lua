@@ -82,8 +82,7 @@ require("mason-null-ls").setup({
     shfmt = function(source_name, methods)
       -- custom logic
       require("mason-null-ls").default_setup(source_name, methods) -- to maintain default behavior
-    end,
-  },
+    end, },
   automatic_installation = true,
 })
 
@@ -183,6 +182,7 @@ lspconfig.tsserver.setup({
   capabilities = capabilities,
 })
 
+
 lspconfig.zls.setup({
   capabilities = capabilities,
   cmd = { "zls" },
@@ -237,26 +237,34 @@ lspconfig.helm_ls.setup {
   filetypes = {"helm"},
   cmd = {"helm_ls", "serve"},
 }
-local rt = require("rust-tools")
-rt.setup({
-  server = {
-    on_attach = function(_, bufnr)
-      -- Hover actions
-      vim.keymap.set("n", "<leader>la", rt.hover_actions.hover_actions, { buffer = bufnr })
-      -- Code action groups
-      vim.keymap.set("n", "<Leader>a", rt.code_action_group.code_action_group, { buffer = bufnr })
-    end,
+
+
+
+lspconfig.zls.setup({})
+
+lspconfig.pylsp.setup({})
+
+lspconfig.rust_analyzer.setup({
+  capabilities = capabilities,
+  settings = {
+    ["rust-analyzer"] = {
+      checkOnSave = {
+        command = "clippy",
+      },
+    },
   },
 })
-lspconfig.pylsp.setup({})
+
+lspconfig.ruby_ls.setup({})
 
 for _, server in ipairs({
 --  "yamlls",
   "tailwindcss",
   "gopls",
-  "rust_analyzer",
   "bashls",
   "cmake",
+  "cssls",
+  "dockerls",
   "emmet_ls",
   "graphql",
   "html",

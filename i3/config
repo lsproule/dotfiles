@@ -194,6 +194,6 @@ bindsym $mod+r mode "resize"
 # Start i3bar to display a workspace bar (plus the system information i3status
 exec polybar -c ~/.config/polybar/config.ini example && polybar -c ~/.confg/polybar/config.ini hdmi
 exec_always pkill -f bg.sh
-exec_always ~/scripts/bg.sh
+exec_always  feh --randomize --bg-fill ~/backgrounds/stranger-days.jpg 
 
 

@@ -8,7 +8,7 @@ local get_master_node = function()
     return nil
   end
 
-  local root =  ts_utils.get_root_for_node(node)
+  ts_utils.get_root_for_node(node)
   local start_row = node:start()
   local parent = node:parent()
   while parent ~= nil and parent:start() == start_row do
@@ -16,15 +16,12 @@ local get_master_node = function()
     parent = node:parent()
   end
   return node
-
 end
 
 M.select = function()
-
   local node = get_master_node()
   local bufnr = vim.api.nvim_get_current_buf()
   ts_utils.update_selection(bufnr, node, "V")
-
 end
 
 return M
