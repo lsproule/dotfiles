@@ -106,6 +106,16 @@ vim.keymap.set("v", "<leader>q", function()
 end
 )
 
+
+vim.keymap.set("v", "gl", function()
+  git_link(true)
+end)
+
+vim.keymap.set("n", "<Leader>gl", function()
+  git_link(false)
+end)
+
+
 -- Copilot
 vim.keymap.set("n", "<leader>cp", function()
   vim.cmd("Copilot toggle")
