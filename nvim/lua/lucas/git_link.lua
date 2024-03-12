@@ -1,10 +1,8 @@
-
 local actions = require("telescope.actions")
 local actions_state = require("telescope.actions.state")
 local finders = require("telescope.finders")
 local pickers = require("telescope.pickers")
 local themes = require("telescope.themes")
-
 
 function git_link(consider_selection)
   local git_rev = vim.trim(vim.system({ "git", "rev-parse", "HEAD" }):wait().stdout)
