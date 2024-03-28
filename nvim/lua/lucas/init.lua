@@ -1,7 +1,6 @@
 require("lucas.packages")
 require("lucas.globals")
 require("lucas.mason")
-require("lucas.git_link")
 require("lucas.keymaps")
 require("lucas.dap_config")
 require("lucas.options")

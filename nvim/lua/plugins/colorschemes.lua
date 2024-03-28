@@ -1,5 +1,4 @@
 return {
-  "sainnhe/everforest",
   {
     "folke/tokyonight.nvim",
     config = function()
@@ -14,6 +13,4 @@ return {
       })
     end
   },
-  "ray-x/aurora",
-  "sainnhe/sonokai"
 }

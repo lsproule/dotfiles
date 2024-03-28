@@ -1,4 +1,7 @@
-return { 
-  "MunifTanjim/nui.nvim",
-  event = "VeryLazy"
+return {
+	{
+		"MunifTanjim/nui.nvim",
+		event = "VeryLazy",
+	},
+	{ "nvim-neotest/nvim-nio" },
 }

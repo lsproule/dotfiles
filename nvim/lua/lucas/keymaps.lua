@@ -10,6 +10,7 @@ end, { desc = "Toggle Explorer Focus" })
 
 --vim.keymap.set("n", "<leader>e", require("telescope.builtin").find_files, { desc = "Find Files" })
 
+
 vim.keymap.set("n", "<leader>w", function()
 	if vim.bo.filetype == "neo-tree" then
 		vim.cmd.wincmd("p")
@@ -38,14 +39,35 @@ end, { desc = "Resize right" })
 vim.keymap.set("n", "<C-Left>", function()
 	vim.cmd("vertical resize -10")
 end, { desc = "Resize left" })
+
+
+
+function CountTerms()
+    local buffers = vim.api.nvim_list_bufs()
+    local terminal_count = 0
+
+    for _, buf in ipairs(buffers) do
+        if vim.bo[buf].buftype == "terminal" then
+            terminal_count = terminal_count + 1
+        end
+    end
+    return terminal_count
+end
+
 vim.keymap.set("n", "<leader>th", function()
 	vim.cmd("ToggleTerm direction=horizontal")
-end, { desc = "Toggle horizontal Terminal" })
+end, { desc = "toggle horizontal terminal" })
+
+vim.keymap.set("n", "<leader>tn", function()
+     local command = CountTerms() + 1 .. "ToggleTerm"
+     vim.cmd(command)
+ end, { noremap = true, silent = true, desc = "New" })
+
 vim.keymap.set("n", "<leader>tv", function()
-	vim.cmd("ToggleTerm direction=vertical")
+	vim.cmd( "ToggleTerm direction=vertical")
 end, { desc = "Toggle vertical Terminal" })
 vim.keymap.set("n", "<leader>tf", function()
-	vim.cmd("ToggleTerm direction=float")
+	vim.cmd( "ToggleTerm direction=float")
 end, { desc = "Toggle floating Terminal" })
 
 vim.keymap.set("n", "<C-h>", [[<Cmd>wincmd h<CR>]], { desc = "Move left" })
@@ -108,11 +130,11 @@ end
 
 
 vim.keymap.set("v", "gl", function()
-  git_link(true)
+  vim.cmd("GitLink true")
 end)
 
 vim.keymap.set("n", "<Leader>gl", function()
-  git_link(false)
+  vim.cmd("GitLink")
 end)
 
 

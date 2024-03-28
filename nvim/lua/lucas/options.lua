@@ -19,6 +19,6 @@ vim.opt.undofile = true
 vim.opt.wrap = false
 vim.opt.relativenumber = true
 vim.opt.number = true
-vim.cmd("set nowrap")
+vim.opt.wrap = false
 
-
+vim.g.neovide_scale_factor = .7 
