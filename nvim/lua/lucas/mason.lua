@@ -82,7 +82,8 @@ require("mason-null-ls").setup({
     shfmt = function(source_name, methods)
       -- custom logic
       require("mason-null-ls").default_setup(source_name, methods) -- to maintain default behavior
-    end, },
+    end,
+  },
   automatic_installation = true,
 })
 
@@ -182,7 +183,6 @@ lspconfig.tsserver.setup({
   capabilities = capabilities,
 })
 
-
 lspconfig.zls.setup({
   capabilities = capabilities,
   cmd = { "zls" },
@@ -218,27 +218,25 @@ lspconfig.yamlls.setup({
   },
 })
 
-local configs = require('lspconfig.configs')
-local util = require('lspconfig.util')
+local configs = require("lspconfig.configs")
+local util = require("lspconfig.util")
 
 if not configs.helm_ls then
   configs.helm_ls = {
     default_config = {
-      cmd = {"helm_ls", "serve"},
-      filetypes = {'helm'},
+      cmd = { "helm_ls", "serve" },
+      filetypes = { "helm" },
       root_dir = function(fname)
-        return util.root_pattern('Chart.yaml')(fname)
+        return util.root_pattern("Chart.yaml")(fname)
       end,
     },
   }
 end
 
-lspconfig.helm_ls.setup {
-  filetypes = {"helm"},
-  cmd = {"helm_ls", "serve"},
-}
-
-
+lspconfig.helm_ls.setup({
+  filetypes = { "helm" },
+  cmd = { "helm_ls", "serve" },
+})
 
 lspconfig.zls.setup({})
 
@@ -258,7 +256,7 @@ lspconfig.rust_analyzer.setup({
 lspconfig.ruby_ls.setup({})
 
 for _, server in ipairs({
---  "yamlls",
+  --  "yamlls",
   "tailwindcss",
   "gopls",
   "bashls",

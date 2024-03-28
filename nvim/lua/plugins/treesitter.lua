@@ -6,7 +6,7 @@ return {
       require("nvim-treesitter.configs").setup({
         modules = {},
         sync_install = false,
-        ensure_installed = {},
+        ensure_installed = {"vimdoc", "lua", "vim", "python", "go", "typescript"},
         ignore_install = {},
         auto_install = false,
         autotag = {
@@ -15,6 +15,9 @@ return {
           enable_close = true,
           enable_close_on_slash = true,
           filetypes = { "html", "xml" },
+        },
+        highlight = {
+          disable = {"*.txt"},
         },
       })
     end,

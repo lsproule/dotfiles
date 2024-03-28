@@ -1,7 +1,7 @@
 local dap, dapui =require("dap"),require("dapui")
 
 dapui.setup()
-vim.keymap.set("n", "<leader>du", "<cmd>lua require('dapui').toggle()<CR>" )
+vim.keymap.set("n", "<leader>du", dapui.toggle )
 
 -- dap keybindings
 vim.keymap.set("n", '<leader>dn', dap.step_over)
@@ -9,6 +9,7 @@ vim.keymap.set("n", '<leader>db', dap.toggle_breakpoint)
 vim.keymap.set("n", '<leader>di', dap.step_into)
 vim.keymap.set("n", '<leader>do', dap.step_into)
 vim.keymap.set("n", '<leader>dc', dap.continue)
+vim.keymap.set("n", '<leader>dt', dap.terminate)
 vim.keymap.set("n", '<leader>dm', require('dap-python').test_method)
 vim.keymap.set("n", '<leader>dm', require('dap-python').test_method)
 vim.keymap.set("n", '<leader>dk', require('dap-python').test_class)
