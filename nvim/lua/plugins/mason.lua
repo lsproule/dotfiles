@@ -2,7 +2,13 @@ return {
   {
     "williamboman/mason.nvim",
   },
-  "jose-elias-alvarez/null-ls.nvim",
+  {
+    "nvimtools/none-ls.nvim",
+    event = "VeryLazy",
+    dependencies = {
+      "nvimtools/none-ls-extras.nvim",
+    },
+  },
   "williamboman/mason-lspconfig.nvim",
   "jay-babu/mason-null-ls.nvim",
 }

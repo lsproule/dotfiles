@@ -2,7 +2,8 @@ return {
   {
     "zbirenbaum/copilot.lua",
     config = function()
-      require("copilot").setup({
+      local copilot = require("copilot")
+      copilot.setup({
         panel = {
           enabled = true,
           auto_refresh = false,
@@ -45,5 +46,6 @@ return {
         server_opts_overrides = {},
       })
     end,
+    --vim.cmd("Copilot disable")
   },
 }
