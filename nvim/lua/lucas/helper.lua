@@ -23,5 +23,4 @@ M.select = function()
   local bufnr = vim.api.nvim_get_current_buf()
   ts_utils.update_selection(bufnr, node, "V")
 end
-
 return M

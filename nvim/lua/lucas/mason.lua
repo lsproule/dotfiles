@@ -1,12 +1,17 @@
 local null_ls = require("null-ls")
 
-null_ls.setup({})
-
 local formatting = null_ls.builtins.formatting
 local diagnostics = null_ls.builtins.diagnostics
-
+local completions = null_ls.builtins.completion
 null_ls.setup({
   sources = {
+    formatting.stylua,
+    diagnostics.mypy,
+    formatting.clang_format,
+    require("none-ls.formatting.jq"),
+    require("none-ls.code_actions.eslint"),
+    formatting.prettierd,
+    formatting.cmake_format,
     formatting.prettier.with({
       filetypes = {
         "javascript",
@@ -27,44 +32,8 @@ null_ls.setup({
         "handlebars",
       },
     }),
-    formatting.stylua,
-    diagnostics.eslint_d,
+    completions.spell,
   },
-
-  --format on save
-  on_attach = function(current_client, bufnr)
-    if current_client.supports_method("textDocument/formatting") then
-      vim.api.nvim_clear_autocmds({ group = "userlspconfig", buffer = bufnr })
-      vim.api.nvim_create_autocmd("InsertLeave", {
-        group = "userlspconfig",
-        buffer = bufnr,
-        callback = function()
-          vim.lsp.buf.format({
-            async = true,
-            filter = function(client)
-              -- only use null-ls for formatting instead of lsp server
-              return client.name == "null-ls"
-            end,
-            bufnr = bufnr,
-          })
-        end,
-      })
-      vim.api.nvim_create_autocmd("BufWritePre", {
-        group = "userlspconfig",
-        buffer = bufnr,
-        callback = function()
-          vim.lsp.buf.format({
-            async = true,
-            filter = function(client)
-              -- only use null-ls for formatting instead of lsp server
-              return client.name == "null-ls"
-            end,
-            bufnr = bufnr,
-          })
-        end,
-      })
-    end
-  end,
 })
 
 require("mason").setup()

@@ -2,7 +2,7 @@ vim.g.mapleader = " "
 
 vim.keymap.set("n", "<leader>e", function()
 	if vim.bo.filetype == "neo-tree" then
-		vim.cmd.wincmd("p")
+		vim.cmd("Neotree close")
 	else
 		vim.cmd("Neotree source=filesystem reveal_force_cwd position=left")
 	end
