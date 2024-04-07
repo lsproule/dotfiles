@@ -1,5 +1,6 @@
 return {
   "nvim-telescope/telescope.nvim",
+  event = "VeryLazy",
   config = function()
     local builtin = require("telescope.builtin")
     vim.keymap.set("n", "<leader>ff", builtin.find_files, { desc = "Find Files" })

@@ -1,3 +1,4 @@
 return {
-  "vijaymarupudi/nvim-fzf"
+  "vijaymarupudi/nvim-fzf",
+  event = "VeryLazy",
 }
