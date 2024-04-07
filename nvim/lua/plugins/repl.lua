@@ -2,6 +2,7 @@ return {
   "tpope/vim-repeat",
   {
     "ACupofAir/nvim-repl",
+    event = "VeryLazy",
 
     config = function()
       vim.g.repl_split = "bottom"

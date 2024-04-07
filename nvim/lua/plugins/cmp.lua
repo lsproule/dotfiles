@@ -2,7 +2,7 @@ return {
 
   {
     "hrsh7th/nvim-cmp",
-    event="VeryLazy",
+    event = { "BufReadPre", "BufNewFile" },
     config = function()
       local cmp = require("cmp")
 
@@ -41,13 +41,12 @@ return {
           end),
         }),
         sources = cmp.config.sources({
-          { name = "nvim_lsp", max_item_count = 10 },
-          -- { name = "vsnip" }, -- For vsnip users.
+          { name = "nvim_lsp", max_item_count = 15 },
           { name = "luasnip",  max_item_count = 3 }, -- For luasnip users.
+          { name = "buffer" },
+          -- { name = "vsnip" }, -- For vsnip users.
           -- { name = 'ultisnips' }, -- For ultisnips users.
           -- { name = 'snippy' }, -- For snippy users.
-        }, {
-          { name = "buffer" },
         }),
       })
 

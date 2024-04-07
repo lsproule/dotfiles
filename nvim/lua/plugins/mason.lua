@@ -1,14 +1,21 @@
 return {
   {
     "williamboman/mason.nvim",
+    event = "VimEnter",
   },
   {
     "nvimtools/none-ls.nvim",
-    event = "VeryLazy",
+    event = "VimEnter",
     dependencies = {
       "nvimtools/none-ls-extras.nvim",
     },
   },
-  "williamboman/mason-lspconfig.nvim",
-  "jay-babu/mason-null-ls.nvim",
+  {
+    "williamboman/mason-lspconfig.nvim",
+    event = "VimEnter",
+  },
+  {
+    "jay-babu/mason-null-ls.nvim",
+    event = "VimEnter",
+  },
 }

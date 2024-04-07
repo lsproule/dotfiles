@@ -1,8 +1,9 @@
 return {
   "cshuaimin/ssr.nvim",
   -- Calling setup is optional.
+  event = "VeryLazy",
   config = function()
-    require("ssr").setup {
+    require("ssr").setup({
       border = "rounded",
       min_width = 50,
       min_height = 5,
@@ -16,7 +17,9 @@ return {
         replace_confirm = "<cr>",
         replace_all = "<leader><cr>",
       },
-    }
-    vim.keymap.set({ "n", "x" }, "<leader>sr", function() require("ssr").open() end)
-  end
+    })
+    vim.keymap.set({ "n", "x" }, "<leader>sr", function()
+      require("ssr").open()
+    end)
+  end,
 }

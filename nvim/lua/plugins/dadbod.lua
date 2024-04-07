@@ -1,4 +1,10 @@
 return {
-  {"tpope/vim-dadbod"},
-  {"kristijanhusak/vim-dadbod-ui"}
+  {
+    "tpope/vim-dadbod",
+    event = "VeryLazy",
+  },
+  {
+    "kristijanhusak/vim-dadbod-ui",
+    event = "VeryLazy",
+  },
 }

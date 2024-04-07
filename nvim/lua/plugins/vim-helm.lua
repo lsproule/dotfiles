@@ -1,3 +1,4 @@
 return {
-  "towolf/vim-helm"
+  "towolf/vim-helm",
+  event = "VeryLazy",
 }
