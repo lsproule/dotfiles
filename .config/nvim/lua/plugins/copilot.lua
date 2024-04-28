@@ -1,7 +1,6 @@
 return {
   {
     "zbirenbaum/copilot.lua",
-    event = "VeryLazy",
     config = function()
       local copilot = require("copilot")
       copilot.setup({
