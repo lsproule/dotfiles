@@ -1,4 +1,4 @@
-sudo apt install -y bspwm i3 zoxide kitty picom polybar ranger rofi sxhkd zsh \
+sudo apt install -y bspwm i3 zoxide stow kitty picom polybar ranger rofi sxhkd zsh \
   tmux xclip exa ripgrep fzf curl git python3 python3-pip python3-venv \
   golang nodejs npm  ninja-build gettext cmake unzip pkg-config \
   build-essential libtool-bin autoconf automake libxcb-xfixes0-dev \
