@@ -1,1 +1,1 @@
-stow .
+(cd .. && stow  .)
