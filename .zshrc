@@ -22,7 +22,6 @@ plugins=(
 source $ZSH/oh-my-zsh.sh
 
 source ~/venv/bin/activate
-setxkbmap -option caps:escape
 
 # autoload -Uz compinit && compinit -C
 #[[ $commands[kubectl] ]] && source <(rustup completions zsh)

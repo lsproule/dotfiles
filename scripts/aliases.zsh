@@ -1,8 +1,6 @@
 alias vim="nvim"
 alias nv="nvim"
 alias wrk="cd ~/wrk/"
-alias pbcopy="xclip -sel clip"
-alias luamake=/home/lucas/lua-language-server/3rd/luamake/luamake
 alias c="clear"
 alias ls="eza --icons "
 alias cd="z"
