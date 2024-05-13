@@ -13,5 +13,6 @@ return {
     end, { desc = "Find man_pages" })
     vim.keymap.set("n", "<leader>fb", builtin.buffers, { desc = "Find Buffers" })
     vim.keymap.set("n", "<leader>fh", builtin.help_tags, { desc = "Find Help" })
+    vim.keymap.set("n",  "<leader>/", builtin.current_buffer_fuzzy_find, { desc = "Find in current buffer" })
   end,
 }

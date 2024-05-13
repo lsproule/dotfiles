@@ -27,7 +27,6 @@ function table.take(tbl, field)
   return val
 end
 
-
 ---@class SystemOptions : vim.SystemOpts
 ---
 ---@field on_exit? fun(result: vim.SystemCompleted)
