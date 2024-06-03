@@ -7,7 +7,4 @@ require("lucas.filetypes")
 require("lucas.knap")
 require("lucas.dap_config")
 require("lucas.colorscheme")
-require("lucas.mason-lsps")
-
-
-
+require("lucas.autocmds")

@@ -7,4 +7,11 @@ return {
       require("git_lines").setup({})
     end,
 	},
+	{
+		dir = "/Users/lucas/plugins/lsp",
+    name = "lsp",
+    config = function()
+      require("lsp").setup({})
+    end,
+	},
 }

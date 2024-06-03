@@ -9,7 +9,6 @@ null_ls.setup({
   sources = {
     formatting.stylua,
     formatting.clang_format,
-    formatting.mypy,
     require("none-ls.formatting.jq"),
     require("none-ls.code_actions.eslint"),
     formatting.prettierd,

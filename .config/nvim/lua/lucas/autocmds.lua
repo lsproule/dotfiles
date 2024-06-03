@@ -5,12 +5,22 @@ local autocmd = api.nvim_create_autocmd
 local group = api.nvim_create_augroup("autorun", {
   clear = true,
 })
+local elixir = api.nvim_create_augroup("elixir", {
+  clear = true,
+})
 
 api.nvim_create_autocmd("BufWritePre", {
-  group = "autorun",
+  group = group,
   pattern = "*.py",
   callback = function()
     lsp.buf.format()
+  end,
+})
+api.nvim_create_autocmd("BufEnter", {
+  group = elixir,
+  pattern = "*.exs",
+  callback = function()
+    vim.cmd("TSEnable highlight")
   end,
 })
 api.nvim_create_autocmd("BufWritePre", {

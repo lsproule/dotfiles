@@ -1,40 +1,23 @@
-export ZSH="$HOME/.oh-my-zsh"
-ZSH_THEME="robbyrussell"
 
-ZSH_DISABLE_COMPFIX="true"
+ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git"
 
+[ ! -d $ZINIT_HOME ] && mkdir -p "$(dirname $ZINIT_HOME)"
+[ ! -d $ZINIT_HOME/.git ] && git clone https://github.com/zdharma-continuum/zinit.git "$ZINIT_HOME"
 
-source $ZSH/oh-my-zsh.sh
-
-KUBE_PS1_SYMBOL_USE_IMG=false
-KUBE_PS1_SYMBOL_ENABLE=false
-
-plugins=(
-  git 
-  zsh-syntax-highlighting 
-  zsh-autosuggestions
-  fast-syntax-highlighting 
-  zsh-completions
-  zoxide
-  kubectl
-  tmux
-)
-source $ZSH/oh-my-zsh.sh
-
-source ~/venv/bin/activate
-
-# autoload -Uz compinit && compinit -C
-#[[ $commands[kubectl] ]] && source <(rustup completions zsh)
-[[ $commands[kubectl] ]] && source <(kubectl completion zsh)
-[[ $commands[kubectl] ]] && source <(helm completion zsh)
-
-unsetopt BEEP
+source "${ZINIT_HOME}/zinit.zsh"
 source ~/scripts/aliases.zsh
 source ~/scripts/exports.zsh
+source ~/scripts/theme.zsh
 
-# bun completions
-[ -s "/home/lucas/.bun/_bun" ] && source "/home/lucas/.bun/_bun"
+zinit light zsh-users/zsh-autosuggestions
+zinit light zdharma-continuum/fast-syntax-highlighting
+zinit light vim/vim
+zinit light jonmosco/kube-ps1
 
-# bun
-export BUN_INSTALL="$HOME/.bun"
-export PATH="$BUN_INSTALL/bin:$PATH"
+zinit ice as'null' from"gh-r" sbin
+
+zi has'zoxide' wait lucid for atload="function z() { __zoxide_z \"\$@\" }" \
+  z-shell/zsh-zoxide
+
+autoload -Uz compinit && compinit
+
