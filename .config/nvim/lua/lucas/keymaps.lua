@@ -1,10 +1,11 @@
 vim.g.mapleader = " "
 
+
 vim.keymap.set("n", "<leader>e", function()
-	if vim.bo.filetype == "neo-tree" then
-		vim.cmd("Neotree close")
+	if vim.bo.filetype == "nvim-tree" then
+		vim.cmd("NvimTreeOpen")
 	else
-		vim.cmd("Neotree source=filesystem reveal_force_cwd position=left")
+		vim.cmd("NvimTreeToggle")
 	end
 end, { desc = "Toggle Explorer Focus" })
 
@@ -114,7 +115,7 @@ vim.keymap.set("n", "sd", "<Cmd>DB", { desc = "connect to db" })
 -- my plugin
 vim.keymap.set("n", "vip", "<Cmd>lua require('lucas.helper').select()<CR>", { desc = "Select" })
 
-vim.keymap.set("v", "<C-c>", ":w ! pbcopy<CR>")
+--vim.keymap.set("v", "<C-c>", ":w ! pbcopy<CR>")
 
 vim.keymap.set("n", "<leader>/", "<Cmd>CommentToggle<CR>", { desc = "Comment" })
 vim.keymap.set("v", "<leader>/", "<Cmd>CommentToggle<CR>", { desc = "Comment" })

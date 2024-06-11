@@ -8,7 +8,7 @@ return {
       options = {
         offsets = {
           {
-            filetype = "neo-tree",
+            filetype = "NvimTree",
             text = "filesystem",
             separator = true,
             text_align = "left",

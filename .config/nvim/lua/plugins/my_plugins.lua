@@ -1,7 +1,7 @@
 return {
 	{
 		dir = "/Users/lucas/plugins/git_lines.nvim",
-    event = "VeryLazy",
+    event = "LspAttach",
     name = "git_lines.nvim",
     config = function()
       require("git_lines").setup({})
@@ -9,6 +9,7 @@ return {
 	},
 	{
 		dir = "/Users/lucas/plugins/lsp",
+    event = "LspAttach",
     name = "lsp",
     config = function()
       require("lsp").setup({})
