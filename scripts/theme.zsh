@@ -3,7 +3,11 @@ autoload -Uz add-zsh-hook
 setopt prompt_subst
 
 function parse_git_dirty() {
-  [[ $(git status 2> /dev/null | tail -n1) != "nothing to commit, working tree clean" ]] && echo "%{$fg[blue]%}) %{$fg[yellow]%}%1{✗ %}%{$reset_color%}"
+  if [[ $(git status 2> /dev/null | tail -n1) != "nothing to commit, working tree clean" ]]; then
+    echo "%{$fg[blue]%}) %{$fg[yellow]%}%1{✗ %}%{$reset_color%}"
+  else
+    echo "%{$fg[blue]%})%{$reset_color%}"
+  fi
 }
 
 setup_prompt() {
@@ -18,7 +22,7 @@ setup_prompt() {
 
   git rev-parse --is-inside-work-tree &> /dev/null || return
 
-  PROMPT="$PROMPT %{$fg[blue]%}git(%{$fg_bold[red]%}${ref#refs/heads/})$(parse_git_dirty)%{$reset_color%}"
+  PROMPT="$PROMPT %{$fg[blue]%}git(%{$fg_bold[red]%}${ref#refs/heads/}$(parse_git_dirty)"
 }
 
 PROMPT="%{$fg_bold[green]%}%1{%G➜%}%{$reset_color%} %{$fg[cyan]%}%c%{$reset_color%}"
