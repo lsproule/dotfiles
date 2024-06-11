@@ -18,7 +18,7 @@ setup_prompt() {
 
   git rev-parse --is-inside-work-tree &> /dev/null || return
 
-  PROMPT="$PROMPT %{$fg[blue]%}git(%{$fg_bold[red]%}${ref#refs/heads/}$(parse_git_dirty)%{$reset_color%}"
+  PROMPT="$PROMPT %{$fg[blue]%}git(%{$fg_bold[red]%}${ref#refs/heads/})$(parse_git_dirty)%{$reset_color%}"
 }
 
 PROMPT="%{$fg_bold[green]%}%1{%G➜%}%{$reset_color%} %{$fg[cyan]%}%c%{$reset_color%}"
