@@ -10,6 +10,7 @@ function os.stdout(cmd, raw)
   return s 
 end
 
+
 function os.stdout_table(cmd, raw)
   local lines = table or {}
   local f = assert(io.popen(cmd, 'r'))
@@ -23,8 +24,6 @@ function os.stdout_table(cmd, raw)
   end
   return table
 end
-
-
 
 M.get_emoji = function(...)
   local str = table.concat({...}, " ")

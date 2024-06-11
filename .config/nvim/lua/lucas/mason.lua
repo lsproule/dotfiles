@@ -12,6 +12,7 @@ null_ls.setup({
     require("none-ls.formatting.jq"),
     require("none-ls.code_actions.eslint"),
     formatting.prettierd,
+    formatting.rubocop,
     formatting.cmake_format,
     formatting.prettier.with({
       filetypes = {
@@ -60,15 +61,3 @@ require("mason-lspconfig").setup({
   automatic_installation = true,
 })
 
-
-if not configs.helm_ls then
-  configs.helm_ls = {
-    default_config = {
-      cmd = { "helm_ls", "serve" },
-      filetypes = { "helm" },
-      root_dir = function(fname)
-        return util.root_pattern("Chart.yaml")(fname)
-      end,
-    },
-  }
-end
