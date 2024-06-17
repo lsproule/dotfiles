@@ -1,6 +1,6 @@
 return {
   "terrortylor/nvim-comment",
-  event = "VeryLazy",
+  event = "LspAttach",
   config = function()
     require("nvim_comment").setup({})
   end,

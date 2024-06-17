@@ -9,5 +9,5 @@ return {
 			},
 		})
 	end,
-	dependencies = { { "rafamadriz/friendly-snippets", event = "VeryLazy" } },
+	dependencies = { { "rafamadriz/friendly-snippets", event = "LspAttach" } },
 }

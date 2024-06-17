@@ -1,8 +1,8 @@
 return {
 	{
 		"hrsh7th/nvim-cmp",
-    lazy = true,
-		event = { "BufReadPre", "BufNewFile" },
+		lazy = false,
+    event = "LspAttach",
 		config = function()
 			local cmp = require("cmp")
 
@@ -21,26 +21,26 @@ return {
 					["<C-c>"] = cmp.mapping.complete(),
 					["<C-e>"] = cmp.mapping.abort(),
 					["<CR>"] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
-					["<C-p>"] = cmp.mapping.select_next_item(),
-					["<C-n>"] = cmp.mapping.select_prev_item(),
---					["<Tab>"] = cmp.mapping(function(fallback)
---						if cmp.visible() then
---							cmp.select_next_item()
---						elseif luasnip.expand_or_jumpable() then
---							luasnip.expand_or_jump()
---						else
---							fallback()
---						end
---					end),
---					["<S-Tab>"] = cmp.mapping(function(fallback)
---						if cmp.visible() then
---							cmp.select_prev_item()
---						elseif luasnip.jumpable(-1) then
---							luasnip.jump(-1)
---						else
---							fallback()
---						end
---					end),
+					["<C-n>"] = cmp.mapping.select_next_item(),
+					["<C-p>"] = cmp.mapping.select_prev_item(),
+					--					["<Tab>"] = cmp.mapping(function(fallback)
+					--						if cmp.visible() then
+					--							cmp.select_next_item()
+					--						elseif luasnip.expand_or_jumpable() then
+					--							luasnip.expand_or_jump()
+					--						else
+					--							fallback()
+					--						end
+					--					end),
+					--					["<S-Tab>"] = cmp.mapping(function(fallback)
+					--						if cmp.visible() then
+					--							cmp.select_prev_item()
+					--						elseif luasnip.jumpable(-1) then
+					--							luasnip.jump(-1)
+					--						else
+					--							fallback()
+					--						end
+					--					end),
 				}),
 				sources = cmp.config.sources({
 					{ name = "nvim_lsp", max_item_count = 15 },
@@ -80,10 +80,15 @@ return {
 			})
 		end,
 	},
-	"hrsh7th/cmp-nvim-lsp",
+	{ "hrsh7th/cmp-nvim-lsp", lazy = false },
 	"hrsh7th/cmp-buffer",
 	"hrsh7th/cmp-path",
-	"hrsh7th/cmp-cmdline",
-	"hrsh7th/cmp-cmdline",
-	"saadparwaiz1/cmp_luasnip",
+	{
+		"hrsh7th/cmp-cmdline",
+		lazy = false,
+	},
+	{ 
+    "saadparwaiz1/cmp_luasnip",
+    lazy = false,
+  },
 }

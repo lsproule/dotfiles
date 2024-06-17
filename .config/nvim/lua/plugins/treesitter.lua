@@ -8,14 +8,7 @@ return {
         sync_install = false,
         ensure_installed = {"vimdoc", "lua", "vim", "python", "go", "typescript"},
         ignore_install = {},
-        auto_install = false,
-        autotag = {
-          enable = true,
-          enable_rename = true,
-          enable_close = true,
-          enable_close_on_slash = true,
-          filetypes = { "html", "xml" },
-        },
+        auto_install = true,
         highlight = {
           disable = {"*.txt"},
         },
@@ -32,13 +25,6 @@ return {
         ensure_installed = {},
         ignore_install = {},
         auto_install = false,
-        autotag = {
-          enable = true,
-          enable_rename = true,
-          enable_close = true,
-          enable_close_on_slash = true,
-          filetypes = { "html", "xml" },
-        },
         playground = {
           enable = true,
           disable = {},

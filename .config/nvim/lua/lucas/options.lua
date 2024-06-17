@@ -11,6 +11,10 @@ vim.opt.listchars = {
   precedes = "…"
 }
 vim.opt.list = true
+vim.opt.wildmenu =true
+vim.o.wildmode = "longest,list:longest,full"
+vim.o.incsearch = true
+vim.o.completeopt = "menuone,noinsert,noselect"
 vim.opt.termguicolors = true
 vim.o.laststatus = 3
 vim.o.cmdheight=0
