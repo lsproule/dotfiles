@@ -145,6 +145,7 @@ vim.keymap.set("n", "<leader>cp", function()
 end, { desc = "toggle Copilot" })
 
 vim.keymap.set("v", "<leader>y", 'y+"' , { desc = "Copy to clipboard" })
+
 -- harpoon
 vim.keymap.set("n", "<leader>hu", function()
 	require("harpoon.ui").toggle_quick_menu()
@@ -152,6 +153,11 @@ end, { desc = "Harpoon UI" })
 vim.keymap.set("n", "<leader>ha", function()
 	require("harpoon.mark").add_file()
 end, { desc = "Harpoon add file" })
+
+
+vim.keymap.set("n", "<leader>ts", function()
+  vim.cmd("ToggleServer")
+end)
 
 vim.keymap.set("n", "<leader>rt", function() vim.cmd("ReplToggle")
 end)

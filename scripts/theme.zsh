@@ -6,12 +6,12 @@ function parse_git_dirty() {
   if [[ $(git status 2> /dev/null | tail -n1) != "nothing to commit, working tree clean" ]]; then
     echo "%{$fg[blue]%}) %{$fg[yellow]%}%1{✗ %}%{$reset_color%}"
   else
-    echo "%{$fg[blue]%}) %{$reset_color%} "
+    echo "%{$fg[blue]%})%{$reset_color%}"
   fi
 }
 
 setup_prompt() {
-  PROMPT="%{$fg_bold[green]%}%1{%G➜%}%{$reset_color%} %{$fg[cyan]%}%c%{$reset_color%}"
+  PROMPT="%{$fg_bold[green]%}%1{%G➜%}%{$reset_color%} %{$fg[cyan]%}%c%{$reset_color%} "
 
   ref=$(git symbolic-ref HEAD 2> /dev/null) || return
 
@@ -31,5 +31,5 @@ precmd_functions+=(setup_prompt)
 ZSH_THEME_GIT_PROMPT_PREFIX="%{$fg_bold[blue]%}git:(%{$fg[red]%}"
 ZSH_THEME_GIT_PROMPT_SUFFIX="%{$reset_color%}"
 ZSH_THEME_GIT_PROMPT_DIRTY="%{$fg[blue]%}) %{$fg[yellow]%}%1{✗%}%{$reset_color%}"
-ZSH_THEME_GIT_PROMPT_CLEAN="%{$fg[blue]%})%{$reset_color%} "
+ZSH_THEME_GIT_PROMPT_CLEAN="%{$fg[blue]%})"
 

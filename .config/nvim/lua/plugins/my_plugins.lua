@@ -11,6 +11,7 @@ return {
 		dir = "/Users/lucas/plugins/lsp",
     event = "LspAttach",
     name = "lsp",
+    lazy = false,
     config = function()
       require("lsp").setup({})
     end,

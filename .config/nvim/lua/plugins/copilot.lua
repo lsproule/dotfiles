@@ -1,11 +1,12 @@
 return {
   {
     "zbirenbaum/copilot.lua",
+    lazy = false,
     config = function()
       local copilot = require("copilot")
       copilot.setup({
         panel = {
-          enabled = true,
+          enabled = false,
           auto_refresh = false,
           keymap = {
             jump_prev = "[[",

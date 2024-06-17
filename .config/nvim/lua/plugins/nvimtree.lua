@@ -1,41 +1,38 @@
 return {
- "nvim-tree/nvim-tree.lua",
- event = "UIEnter",
- config = function()
-   -- disable netrw at the very start of your init.lua
-  vim.g.loaded_netrw = 1
-  vim.g.loaded_netrwPlugin = 1
+	"nvim-tree/nvim-tree.lua",
+	event = "UIEnter",
+	config = function()
+		-- disable netrw at the very start of your init.lua
+		vim.g.loaded_netrw = 1
+		vim.g.loaded_netrwPlugin = 1
 
-  -- optionally enable 24-bit colour
-  vim.opt.termguicolors = true
+		-- optionally enable 24-bit colour
+		vim.opt.termguicolors = true
 
-  -- empty setup using defaults
-  require("nvim-tree").setup()
-
-  -- OR setup with some options
-  require("nvim-tree").setup({
-    sort = {
-      sorter = "case_sensitive",
-    },
-    git = {
-      show_on_dirs = false
-    },
-    actions = {
-      open_file = {
-        quit_on_open = true,
-      }
-    },
-    view = {
-      width = 30,
-    },
-    renderer = {
-      group_empty = true,
-    },
-    filters = {
-      dotfiles = true,
-    },
-  })
- end
+		-- OR setup with some options
+		require("nvim-tree").setup({
+			sort = {
+				sorter = "case_sensitive",
+			},
+			git = {
+				show_on_dirs = false,
+			},
+			actions = {
+				open_file = {
+					quit_on_open = true,
+				},
+			},
+			view = {
+				width = 30,
+			},
+			renderer = {
+				group_empty = true,
+			},
+			filters = {
+				dotfiles = true,
+			},
+		})
+	end,
 }
 --{
 --  "nvim-neo-tree/neo-tree.nvim",
