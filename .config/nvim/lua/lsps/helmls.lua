@@ -1,7 +1,6 @@
 return {
   "helm_ls",
-  enabled = false,
-  function(lspconfig)
+  config = function(lspconfig)
     lspconfig.helm_ls.setup({
       cmd = { "helm_ls", "serve" },
       filetypes = { "helm" },

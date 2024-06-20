@@ -2,7 +2,7 @@ return {
 	{
 		"hrsh7th/nvim-cmp",
 		lazy = false,
-    event = "LspAttach",
+		event = "LspAttach",
 		config = function()
 			local cmp = require("cmp")
 
@@ -23,24 +23,21 @@ return {
 					["<CR>"] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
 					["<C-n>"] = cmp.mapping.select_next_item(),
 					["<C-p>"] = cmp.mapping.select_prev_item(),
-					--					["<Tab>"] = cmp.mapping(function(fallback)
-					--						if cmp.visible() then
-					--							cmp.select_next_item()
-					--						elseif luasnip.expand_or_jumpable() then
-					--							luasnip.expand_or_jump()
-					--						else
-					--							fallback()
-					--						end
-					--					end),
-					--					["<S-Tab>"] = cmp.mapping(function(fallback)
-					--						if cmp.visible() then
-					--							cmp.select_prev_item()
-					--						elseif luasnip.jumpable(-1) then
-					--							luasnip.jump(-1)
-					--						else
-					--							fallback()
-					--						end
-					--					end),
+					["<Tab>"] = cmp.mapping(function(fallback)
+						if luasnip.expand_or_jumpable() then
+							luasnip.expand_or_jump()
+						else
+							fallback()
+						end
+					end),
+					["<S-Tab>"] = cmp.mapping(function(fallback)
+							cmp.select_prev_item()
+						if luasnip.jumpable(-1) then
+							luasnip.jump(-1)
+						else
+							fallback()
+						end
+					end),
 				}),
 				sources = cmp.config.sources({
 					{ name = "nvim_lsp", max_item_count = 15 },
@@ -87,8 +84,8 @@ return {
 		"hrsh7th/cmp-cmdline",
 		lazy = false,
 	},
-	{ 
-    "saadparwaiz1/cmp_luasnip",
-    lazy = false,
-  },
+	{
+		"saadparwaiz1/cmp_luasnip",
+		lazy = false,
+	},
 }
