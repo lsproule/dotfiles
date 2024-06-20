@@ -13,7 +13,7 @@ return {
     name = "lsp",
     lazy = false,
     config = function()
-      require("lsp").setup({})
+      require("lsp-manager").setup({})
     end,
 	},
 }

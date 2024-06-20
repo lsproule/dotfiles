@@ -1,6 +1,5 @@
 return {
   "zls",
-  enabled = false,
   config = function()
     require("lspconfig").zls.setup({
       cmd = { "zls" },

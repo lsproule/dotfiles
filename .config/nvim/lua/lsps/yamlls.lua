@@ -1,6 +1,5 @@
 return {
 	"yamlls",
-	enabled = true,
 	config = function(lspconfig)
 		lspconfig.yamlls.setup({
 			schemas = {

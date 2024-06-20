@@ -1,6 +1,5 @@
 return {
 	"clangd",
-	enabled = true,
 	config = function(lspconfig)
 		local capabilities = vim.lsp.protocol.make_client_capabilities()
 		lspconfig.clangd.setup({
