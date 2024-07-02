@@ -3,6 +3,7 @@
 RCS
 .+,v
 setup
+latex
 
 CVS
 \.\#.+       # CVS conflict files / emacs lock files
