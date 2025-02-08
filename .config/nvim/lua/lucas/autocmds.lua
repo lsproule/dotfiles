@@ -1,10 +1,12 @@
 local api = vim.api
 local lsp = vim.lsp
+
 local autocmd = api.nvim_create_autocmd
 
 local group = api.nvim_create_augroup("autorun", {
   clear = true,
 })
+
 local elixir = api.nvim_create_augroup("elixir", {
   clear = true,
 })

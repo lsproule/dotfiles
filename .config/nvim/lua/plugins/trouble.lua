@@ -1,6 +1,7 @@
 return {
   'folke/trouble.nvim',
   requires = 'kyazdani42/nvim-web-devicons',
+  event = "LspAttach",
   config = function()
     require('trouble').setup {
       auto_open = false,
