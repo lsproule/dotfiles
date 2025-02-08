@@ -3,6 +3,9 @@ return {
 	opts = {
 		settings = {
 			Lua = {
+        hint = {
+          enabled = true
+        },
 				runtime = {
 					version = "LuaJIT",
 					path = vim.split(package.path, ";"),

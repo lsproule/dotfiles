@@ -12,6 +12,7 @@ function parse_git_dirty() {
 
 setup_prompt() {
   PROMPT="%{$fg_bold[green]%}%1{%G➜%}%{$reset_color%} %{$fg[cyan]%}%c%{$reset_color%} "
+  PROMPT='$(kube_ps1)'$PROMPT # or RPROMPT='$(kube_ps1)'
 
   ref=$(git symbolic-ref HEAD 2> /dev/null) || return
 
@@ -23,6 +24,7 @@ setup_prompt() {
   git rev-parse --is-inside-work-tree &> /dev/null || return
 
   PROMPT="$PROMPT %{$fg[blue]%}git(%{$fg_bold[red]%}${ref#refs/heads/}$(parse_git_dirty) "
+
 }
 
 PROMPT="%{$fg_bold[green]%}%1{%G➜%}%{$reset_color%} %{$fg[cyan]%}%c%{$reset_color%}"
@@ -32,4 +34,5 @@ ZSH_THEME_GIT_PROMPT_PREFIX="%{$fg_bold[blue]%}git:(%{$fg[red]%}"
 ZSH_THEME_GIT_PROMPT_SUFFIX="%{$reset_color%}"
 ZSH_THEME_GIT_PROMPT_DIRTY="%{$fg[blue]%}) %{$fg[yellow]%}%1{✗%}%{$reset_color%}"
 ZSH_THEME_GIT_PROMPT_CLEAN="%{$fg[blue]%})"
+
 

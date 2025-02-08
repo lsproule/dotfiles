@@ -1,6 +1,6 @@
 return {
 	{
-		dir = "/home/lucas/plugins/git_lines",
+		dir = "/Users/lucas/plugins/git_lines.nvim",
 		event = "LspAttach",
 		name = "git_lines.nvim",
 		config = function()
@@ -8,12 +8,12 @@ return {
 		end,
 	},
 	{
-		dir = "/home/lucas/plugins/lsps-manager",
+		dir = "/Users/lucas/plugins/lsp-manager",
 		event = "VimEnter",
-		name = "lsp",
+		name = "lsp-manager",
 		lazy = false,
 		config = function()
-			require("lsp-manager").setup({})
+      require("lsp-manager").setup{}
 		end,
 	},
 }
