@@ -5,7 +5,7 @@ return {
 		lspconfig.clangd.setup({
 			cmd = { "clangd", "--background-index", "--offset-encoding=utf-16" },
 			capabilities = capabilities,
-			filetypes = { "c", "cpp", "objc", "objcpp" },
+			filetypes = { "c", "cpp", "objc", "objcpp", "ixx", "hpp", "h" },
 			root_dir = lspconfig.util.root_pattern("compile_commands.json", "compile_flags.txt", ".git"),
 			init_options = {
 				clangdFileStatus = true,

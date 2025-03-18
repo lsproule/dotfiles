@@ -27,3 +27,7 @@ function init_latex(){
   fi
   cp -r ~/dotfiles/latex/* $1
 }
+function unlock_pbx(){
+  BOX=$1
+  ssh root@$BOX fwconsole unlock $2
+}

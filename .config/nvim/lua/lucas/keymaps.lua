@@ -2,6 +2,7 @@ vim.g.mapleader = " "
 local km = vim.keymap
 
 km.set("n", "<leader>e", function()
+
 	if vim.bo.filetype == "nvim-tree" then
 		vim.cmd("NvimTreeOpen")
 	else
