@@ -22,6 +22,11 @@ fi
 source ~/scripts/aliases.zsh
 source ~/scripts/exports.zsh
 
+WORK=true
+
+if [[ $WORK == true ]]; then
+  source ~/scripts/vokol.zsh
+fi
+
 PROMPT='$(kube_ps1)'$PROMPT
 kubeoff
-. "/Users/lucas/.acme.sh/acme.sh.env"

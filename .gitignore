@@ -2,6 +2,7 @@
 */lazy.nvim
 colors/*
 docs
+scripts/vokol.zsh
 ginit.vim
 lua/user
 plugin

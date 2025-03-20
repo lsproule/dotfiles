@@ -1,6 +1,7 @@
 alias vim="nvim"
 alias nv="nvim"
 alias wrk="cd ~/wrk/"
+alias wkr="cd ~/wrk/"
 alias c="clear"
 alias ls="eza --icons "
 alias x=exit
@@ -15,7 +16,6 @@ alias ldkr="lazydocker"
 if command -v zoxide &> /dev/null; then
   alias cd="z"
 fi
-alias vpw="echo 'Hashem1Echad!' | pbcopy"
 
 function init_latex(){
   if [[ -z $1 ]]; then
@@ -31,3 +31,5 @@ function unlock_pbx(){
   BOX=$1
   ssh root@$BOX fwconsole unlock $2
 }
+
+
