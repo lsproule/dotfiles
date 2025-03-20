@@ -10,4 +10,4 @@ ftplugin
 spell
 .luarc.json
 .config/nvim/lazy-lock.json
-
+.config/nvim/lazy.nvim
