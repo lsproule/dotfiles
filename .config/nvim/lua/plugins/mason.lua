@@ -31,8 +31,8 @@ return {
           end, opts)
 
           vim.keymap.set("n", "<leader>ld", vim.diagnostic.open_float)
-          vim.keymap.set("n", "[d", vim.diagnostic.goto_prev)
-          vim.keymap.set("n", "]d", vim.diagnostic.goto_next)
+          --vim.keymap.set("n", "[d", vim.diagnostic.goto_prev)
+          --vim.keymap.set("n", "]d", vim.diagnostic.goto_next)
           vim.keymap.set("n", "<leader>q", vim.diagnostic.setloclist)
 
           --vim.api.nvim_create_autocmd("InsertLeave", { group = "userlspconfig", callback = vim.lsp.buffer.format})
@@ -40,19 +40,10 @@ return {
       })
     end,
   },
-  {
-    "nvimtools/none-ls.nvim",
-    event = "VimEnter",
-    dependencies = {
-      "nvimtools/none-ls-extras.nvim",
-    },
-  },
+
   {
     "williamboman/mason-lspconfig.nvim",
     event = "VimEnter",
   },
-  {
-    "jay-babu/mason-null-ls.nvim",
-    event = "VimEnter",
-  },
+
 }

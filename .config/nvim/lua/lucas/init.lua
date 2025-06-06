@@ -8,4 +8,5 @@ require("lucas.knap")
 require("lucas.dap_config")
 require("lucas.colorscheme")
 require("lucas.autocmds")
+require("lucas.commands")
 
