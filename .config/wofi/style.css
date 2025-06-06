@@ -1,0 +1,56 @@
+window {
+    margin: 5px;
+    border: 2px solid #d3494e;
+    background-color: rgba(25, 25, 25, 0.95); /* Very dark background with slight transparency */
+    font-family: FontAwesome, sans-serif;
+    border-radius: 10px;
+}
+
+@keyframes erscheinen {
+    from {opacity: 0;}
+    to {opacity: 1;}
+}
+
+#input {
+    margin: 5px;
+    border: 3px solid #fc595f;
+    background-color: rgb(47, 57, 74); /* Darker input field */
+    border-radius: 20px;
+    color: #df9395; /* Faded red text */
+    font-size: 16px;
+    padding: 8px;
+}
+
+#inner-box {
+    margin: 0px;
+    border: 0px solid #5d6f71;
+    background-color: rgba(20, 20, 20, 0.9);
+}
+
+#outer-box {
+    margin: 0px;
+    border: 0px solid #d3494e;
+    background-color: rgba(15, 15, 15, 0.95); /* Dark outer background */
+}
+
+#scroll {
+    margin: 0px;
+    border: 2px solid #5d6f71;
+    border-radius: 5px;
+    background-color: rgba(35, 35, 35, 0.9); /* Dark scrollbar */
+}
+
+#text {
+    margin: 4px;
+    border: 0px solid #df9395;
+    color: #ba8586; /* Muted red for text */
+    font-size: 14px;
+}
+
+#selected {
+    background-color: #d3494e;
+    color: #f5f5f5;
+    font-weight: bold;
+    border-radius: 5px;
+}
+
