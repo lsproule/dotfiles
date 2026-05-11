@@ -23,16 +23,6 @@ export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
 export LC_CTYPE=UTF-8
 
-export CONSUL_HTTP_ADDR=https://consul.service.consul:8501
-export CONSUL_HTTP_SSL=true
-export CONSUL_HTTP_SSL_VERIFY=true
-export CONSUL_CLIENT_CERT=~/setup_nomad/certs/browser_certs/lucas_cert.pem
-export CONSUL_CLIENT_KEY=~/setup_nomad/certs/browser_certs/lucas_key.pem
-export NOMAD_ADDR=https://nomad.service.consul:4646
-export NOMAD_HTTP_SSL=true
-export NOMAD_HTTP_SSL_VERIFY=true
-export NOMAD_CLIENT_CERT=~/setup_nomad/certs/browser_certs/lucas_cert.pem
-export NOMAD_CLIENT_KEY=~/setup_nomad/certs/browser_certs/lucas_key.pem
-export NOMAD_TOKEN="REDACTED"
+
 #export ASDF_DATA_DIR="$HOME/.asdf"
 #export PATH="$ASDF_DATA_DIR/shims:$PATH"
