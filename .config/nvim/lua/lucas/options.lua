@@ -5,10 +5,10 @@ vim.opt.scrolloff = 6
 vim.bo.softtabstop = 2
 vim.opt.swapfile = false
 vim.opt.listchars = {
-	tab = "| ",
-	trail = "·",
-	extends = "…",
-	precedes = "…",
+  tab = "| ",
+  trail = "·",
+  extends = "…",
+  precedes = "…",
 }
 vim.opt.backup = true
 vim.opt.backupdir = os.getenv("HOME") .. "/.vim/backup"
@@ -27,4 +27,16 @@ vim.opt.relativenumber = true
 vim.opt.number = true
 vim.opt.wrap = false
 vim.opt.fillchars:append { eob = " " }
+vim.opt.termguicolors = true
+
 vim.g.neovide_scale_factor = 0.7
+
+
+vim.g.coq_settings = {
+  auto_start = "shut-up", -- if you want to start COQ at startup
+  -- Your COQ settings here
+  keymap = {
+    eval_snips = "<c-k>",
+    jump_to_mark = "<c-j>"
+  },
+}

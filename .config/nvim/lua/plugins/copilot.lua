@@ -28,8 +28,6 @@ return {
             accept = "<C-a>",
             accept_word = false,
             accept_line = false,
-            next = "<C-]>",
-            prev = "<C-[>",
           },
         },
         filetypes = {

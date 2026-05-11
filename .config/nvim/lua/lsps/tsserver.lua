@@ -1,8 +1,8 @@
 return {
-	"tsserver",
-	config = function(lspconfig)
+	"ts_ls",
+	config = function()
 		local capabilities = vim.lsp.protocol.make_client_capabilities()
-		lspconfig.tsserver.setup({
+		vim.lsp.config["ts_ls"] = {
 			capabilities = capabilities,
 			settings = {
 				completions = {
@@ -33,6 +33,6 @@ return {
 					},
 				},
 			},
-		})
+		}
 	end,
 }

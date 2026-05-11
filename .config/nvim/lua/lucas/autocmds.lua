@@ -18,13 +18,13 @@ api.nvim_create_autocmd("BufWritePre", {
     lsp.buf.format()
   end,
 })
-api.nvim_create_autocmd("BufEnter", {
-  group = elixir,
-  pattern = "*.exs",
-  callback = function()
-    vim.cmd("TSEnable highlight")
-  end,
-})
+--api.nvim_create_autocmd("BufEnter", {
+--  group = elixir,
+--  pattern = "*.exs",
+--  callback = function()
+--    vim.cmd("TSEnable highlight")
+--  end,
+--})
 api.nvim_create_autocmd("BufWritePre", {
   group = "autorun",
   pattern = { "*.js", "*.ts" },
@@ -32,6 +32,7 @@ api.nvim_create_autocmd("BufWritePre", {
     lsp.buf.format()
   end,
 })
+
 
 local attach_to_buffer = function(output_bufnr, pattern, command)
   autocmd("BufWritePost", {
@@ -52,6 +53,33 @@ local attach_to_buffer = function(output_bufnr, pattern, command)
     end,
   })
 end
+autocmd("BufWritePre", {
+  pattern = "*",
+  desc = "Force expandtab and retab before saving",
+  callback = function(args)
+    local ft = vim.bo[args.buf].filetype
+    local name = vim.api.nvim_buf_get_name(args.buf)
+
+    -- skip makefiles
+    if ft == "make" or name:match("[Mm]akefile") then
+      return
+    end
+    vim.opt_local.expandtab = true
+    vim.cmd("silent! retab")
+  end,
+})
+
+
+autocmd({"BufWinLeave"}, {
+  pattern = {"*.*"},
+  desc = "save view (folds), when closing file",
+  command = "mkview",
+})
+autocmd({"BufWinEnter"}, {
+  pattern = {"*.*"},
+  desc = "load view (folds), when opening file",
+  command = "silent! loadview"
+})
 
 vim.api.nvim_create_user_command("Autorun", function()
   local new_buf = vim.api.nvim_create_buf(false, true)

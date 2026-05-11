@@ -1,5 +1,5 @@
 return {
-	"MysticalDevil/inlay-hints.nvim",
+	"lsproule/inlay-hints.nvim",
 	event = "LspAttach",
 	dependencies = { "neovim/nvim-lspconfig" },
 	config = function()

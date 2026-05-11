@@ -16,3 +16,5 @@ vim.opt.rtp:prepend(lazypath)
 require("lucas.packages")
 require("lucas")
 
+vim.cmd("set expandtab")
+vim.cmd("retab")

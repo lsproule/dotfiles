@@ -34,7 +34,7 @@ is_sole_node() {
 
   read -r output_width output_height <<< "$(current_output_resolution)"
   read -r node_width node_height <<< "$(current_node_size)"
-  bar_height=100 #"$(get_waybar_height)"
+  bar_height=120 #"$(get_waybar_height)"
 
   [[ "$(( node_height + bar_height ))" == "$output_height" ]] && \
     [[ "$node_width" == "$output_width" ]]
@@ -68,14 +68,14 @@ current_window_id() {
 
 maximize_current_node() {
   local output_width output_height bar_height
-  bar_height=100
+  bar_height=80
 
   read -r output_width output_height <<< "$(current_output_resolution)"
   #bar_height="$(get_waybar_height)"
 
   swaymsg "border pixel ${MAXIMIZED_BORDER_PX};
            floating enable; resize set ${output_width} $(( output_height - bar_height ))"
-  wait_for_focus_change "border pixel ${DEFAULT_BORDER_PX}, floating disable"
+  #wait_for_focus_change "border pixel ${DEFAULT_BORDER_PX}, floating disable"
 }
 
 if [[ "${BASH_SOURCE[0]}" == "${0}" ]]

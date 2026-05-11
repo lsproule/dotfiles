@@ -1,7 +1,7 @@
 return {
 	"yamlls",
-	config = function(lspconfig)
-		lspconfig.yamlls.setup({
+	config = function()
+		vim.lsp.config["yamlls"] = {
 			schemas = {
 				["https://raw.githubusercontent.com/yannh/kubernetes-json-schema/master/v1.22.0/all.json"] = "k8s/**",
 				["https://gitlab.com/gitlab-org/gitlab/-/raw/master/app/assets/javascripts/editor/schema/ci.json"] = {
@@ -29,6 +29,6 @@ return {
 					},
 				},
 			},
-		})
+		}
 	end,
 }

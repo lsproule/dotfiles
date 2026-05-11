@@ -1,9 +1,9 @@
 return {
 	"rust_analyzer",
-	config = function(lspconfig)
+	config = function()
     --local capabilities = require("coq").lsp_ensure_capabilities()
     local capabilities = vim.lsp.protocol.make_client_capabilities()
-		lspconfig.rust_analyzer.setup({
+		vim.lsp.config["rust_analyzer"] = {
       capabilities = capabilities,
 			settings = {
 				["rust-analyzer"] = {
@@ -12,6 +12,6 @@ return {
 					},
 				},
 			},
-		})
+		}
 	end,
 }

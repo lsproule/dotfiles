@@ -1,0 +1,65 @@
+## name: Custom Red Palette
+## author: Custom
+## license: MIT
+## blurb: A cohesive red-accented theme for both Vim and Kitty
+
+foreground               #f5f5f5
+background               #252525
+selection_foreground     #f5f5f5
+selection_background     #2f394a
+
+cursor                   #ba8586
+cursor_text_color        #f5f5f5
+
+url_color                #fc595f
+
+active_tab_foreground    #f5f5f5
+active_tab_background    #2f394a
+inactive_tab_foreground  #5d6f71
+inactive_tab_background  #252525
+font_size 16.0
+font_family IosevkaTerm Nerd Font
+letter_spacing 0.2
+bold_font IosevkaTerm Nerd Font Bold
+italic_font IosevkaTerm Nerd Font Italic
+bold_italic_font IosevkaTerm Nerd Font Bold Italic
+enable_ligatures yes
+
+
+
+
+active_border_color      #fc595f
+inactive_border_color    #5d6f71
+
+# black
+color0   #2f394a
+color8   #5d6f71
+
+# red
+color1   #d3494e
+color9   #fc595f
+
+# green (Muted teal for contrast)
+color2   #00d6c9
+color10  #00d6c9
+
+# yellow (Muted warm tone)
+color3   #df9395
+color11  #df9395
+
+# blue (Dark cyan)
+color4   #5d6f71
+color12  #5d6f71
+
+# magenta
+color5   #ba8586
+color13  #ba8586
+
+# cyan (Soft faded tone)
+color6   #df9395
+color14  #df9395
+
+# white
+color7   #f5f5f5
+color15  #f5f5f5
+

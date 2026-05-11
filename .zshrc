@@ -12,6 +12,7 @@ plugins=(
   zsh-syntax-highlighting 
   fast-syntax-highlighting 
   kube-ps1
+  zsh-vi-mode
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -24,6 +25,8 @@ fi
 
 source ~/scripts/aliases.zsh
 source ~/scripts/exports.zsh
+source ~/scripts/exports.zsh
+source ~/scripts/termconfig.zsh
 
 WORK=true
 
@@ -33,6 +36,30 @@ fi
 
 PROMPT='$(kube_ps1)'$PROMPT
 kubeoff
-export  PATH=~/.local/bin:$PATH
+path=("$HOME/go/bin" $path)
+path=("$HOME/.local/bin" $path)
+export PATH
 
+source <(tea completion zsh)
 #zprof
+
+# >>> juliaup initialize >>>
+
+# !! Contents within this block are managed by juliaup !!
+
+path=('/home/lucas/.juliaup/bin' $path)
+export PATH
+
+# <<< juliaup initialize <<<
+export TERM=xterm-256color
+
+# bun completions
+[ -s "/home/lucas/.bun/_bun" ] && source "/home/lucas/.bun/_bun"
+
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
+
+autoload -U +X bashcompinit && bashcompinit
+complete -o nospace -C /usr/local/bin/nomad-pack nomad-pack
+eval "$(~/.local/bin/mise activate zsh)"

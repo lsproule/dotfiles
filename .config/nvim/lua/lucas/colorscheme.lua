@@ -1,13 +1,5 @@
---vim.cmd("colorscheme tokyonight-storm")
---vim.cmd("hi Normal guibg=NONE ctermbg=NONE")
---vim.cmd("hi NonText guibg=NONE ctermbg=NONE")
---vim.cmd("hi CurSearch guibg=#ff0000 guifg=#e6e6e6")
---require("notify").setup({
---  background_colour = "#000000",
---})
 local theme = {}
 
--- Define the color palette
 local colors = {
     bg = "#252525",
     fg = "#f5f5f5",
@@ -20,7 +12,6 @@ local colors = {
     gray = "#5d6f71",
 }
 
--- Apply the colors to highlight groups
 theme.setup = function()
     vim.cmd("highlight clear")
     if vim.fn.exists("syntax_on") then
@@ -60,5 +51,11 @@ theme.setup = function()
     hl("StatusLineNC", colors.gray, colors.bg)
     hl("VertSplit", colors.accent, colors.bg)
 end
+vim.api.nvim_create_autocmd("ColorScheme", {
+    pattern = "*",
+    callback = function()
+        vim.cmd("highlight Normal guifg=" .. colors.fg .. " guibg=" .. colors.bg)
+    end,
+})
 theme.setup()
 

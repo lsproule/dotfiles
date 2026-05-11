@@ -1,26 +1,28 @@
 return {
-	"lua_ls",
-	opts = {
-		settings = {
-			Lua = {
-        hint = {
-          enabled = true
+  "lua_ls",
+  config = function()
+    vim.lsp.config["lua_ls"] = {
+      settings = {
+        Lua = {
+          hint = {
+            enabled = true
+          },
+          runtime = {
+            version = "LuaJIT",
+            path = vim.split(package.path, ";"),
+          },
+          diagnostics = {
+            enable = true,
+            globals = { "vim", "use" },
+          },
+          workspace = {
+            library = { vim.api.nvim_get_runtime_file("", true), vim.env.VIMRUNTIME },
+          },
+          telemetry = {
+            enable = false,
+          },
         },
-				runtime = {
-					version = "LuaJIT",
-					path = vim.split(package.path, ";"),
-				},
-				diagnostics = {
-					enable = true,
-					globals = { "vim", "use" },
-				},
-				workspace = {
-					library = { vim.api.nvim_get_runtime_file("", true), vim.env.VIMRUNTIME },
-				},
-				telemetry = {
-					enable = false,
-				},
-			},
-		},
-	},
+      },
+    }
+  end
 }
