@@ -11,6 +11,18 @@ local elixir = api.nvim_create_augroup("elixir", {
   clear = true,
 })
 
+-- nvim-treesitter `main` branch does not auto-enable highlighting.
+-- Start the TS highlighter per-buffer whenever a parser exists.
+api.nvim_create_autocmd("FileType", {
+  group = api.nvim_create_augroup("ts_highlight", { clear = true }),
+  callback = function(args)
+    local ok = pcall(vim.treesitter.start, args.buf)
+    if not ok then
+      -- no parser for this filetype; nothing to do
+    end
+  end,
+})
+
 api.nvim_create_autocmd("BufWritePre", {
   group = group,
   pattern = "*.py",

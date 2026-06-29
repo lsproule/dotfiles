@@ -58,10 +58,9 @@ bindsym $mod+Return exec alacritty
 # kill focused window
 bindsym $mod+q kill
 
-# start dmenu (a program launcher)
-bindsym $mod+d exec wofi 
-#bindsym $mod+space exec wofi 
-#bindsym $mod+Return exec kitty 
+# launcher (dms spotlight replaces wofi)
+bindsym $mod+d exec dms ipc call spotlight toggle
+#bindsym $mod+Return exec kitty
 
 # A more modern dmenu replacement is rofi:
 # bindcode $mod+40 exec "rofi -modi drun,run -show drun"
@@ -118,7 +117,7 @@ bindsym $mod+t split v
 bindsym $mod+Shift+t split h
 
 # enter fullscreen mode for the focused container
-bindsym $mod+f exec /home/lucas/.config/sway/maximize.sh
+bindsym $mod+f exec $HOME/.config/sway/maximize.sh
 
 bindsym $mod+Tab workspace next
 bindsym $mod+Shift+Tab workspace prev

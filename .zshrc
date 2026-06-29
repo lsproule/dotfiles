@@ -17,6 +17,26 @@ plugins=(
 
 source $ZSH/oh-my-zsh.sh
 
+# Restore emacs keys inside vi insert mode (zsh-vi-mode wipes them on init)
+function zvm_after_init() {
+  bindkey -M viins '^A' beginning-of-line
+  bindkey -M viins '^E' end-of-line
+  bindkey -M viins '^K' kill-line
+  bindkey -M viins '^U' backward-kill-line
+  bindkey -M viins '^W' backward-kill-word
+  bindkey -M viins '^Y' yank
+  bindkey -M viins '^F' forward-char
+  bindkey -M viins '^B' backward-char
+  bindkey -M viins '^N' down-line-or-history
+  bindkey -M viins '^P' up-line-or-history
+  bindkey -M viins '^R' history-incremental-search-backward
+  bindkey -M viins '^D' delete-char-or-list
+  autoload -Uz edit-command-line
+  zle -N edit-command-line
+  bindkey -M viins '^X^E' edit-command-line
+  bindkey -M vicmd '^X^E' edit-command-line
+}
+
 if [[ -n $SSH_CONNECTION ]]; then
   export EDITOR='nvim'
 else

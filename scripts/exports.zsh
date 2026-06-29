@@ -36,3 +36,5 @@ export NOMAD_CLIENT_KEY=~/setup_nomad/certs/browser_certs/lucas_key.pem
 export NOMAD_TOKEN="REDACTED"
 #export ASDF_DATA_DIR="$HOME/.asdf"
 #export PATH="$ASDF_DATA_DIR/shims:$PATH"
+#
+export PATH="$HOME/.local/share/nvim/mason/bin:$PATH"

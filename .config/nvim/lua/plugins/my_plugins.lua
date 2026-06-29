@@ -1,6 +1,10 @@
+-- Local plugins live in ~/plugins. Expand at load time so the config is
+-- username-agnostic (no hardcoded /home/lucas) and survives a fresh bootstrap.
+local plugins = vim.fn.expand("~/plugins")
+
 return {
   {
-    dir = "/home/lucas/plugins/git_lines",
+    dir = plugins .. "/git_lines",
     event = "LspAttach",
     name = "git_lines.nvim",
     config = function()
@@ -8,7 +12,7 @@ return {
     end,
   },
   {
-    dir = "/home/lucas/plugins/lsps-manager",
+    dir = plugins .. "/lsps-manager",
     event = "VimEnter",
     name = "lsp-manager",
     lazy = false,
@@ -17,7 +21,7 @@ return {
     end,
   },
   {
-    dir = "/home/lucas/plugins/reg-edit",
+    dir = plugins .. "/reg-edit",
     event = "VimEnter",
     name = "reg-edit",
     lazy = false,
@@ -32,7 +36,7 @@ return {
     end,
   },
   --{
-  --  dir = "/home/lucas/plugins/nvfs",
+  --  dir = plugins .. "/nvfs",
   --  event = "VimEnter",
   --  name = "nvfs",
   --  lazy = false,
