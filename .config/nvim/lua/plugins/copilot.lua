@@ -22,7 +22,7 @@ return {
         },
         suggestion = {
           enabled = true,
-          auto_trigger = true,
+          auto_trigger = false, -- off by default; toggle on with <leader>cp (:Copilot toggle)
           debounce = 50,
           keymap = {
             accept = "<C-a>",

@@ -1,1 +1,1 @@
-(cd .. && stow  .)
+(cd .. && stow  . --adopt)

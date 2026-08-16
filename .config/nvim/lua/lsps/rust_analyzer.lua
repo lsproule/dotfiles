@@ -1,14 +1,22 @@
 return {
 	"rust_analyzer",
 	config = function()
-    --local capabilities = require("coq").lsp_ensure_capabilities()
-    local capabilities = vim.lsp.protocol.make_client_capabilities()
+    -- capabilities come from the global vim.lsp.config("*") default (blink.cmp)
 		vim.lsp.config["rust_analyzer"] = {
-      capabilities = capabilities,
+			-- hard cap: the scope gets OOM-killed alone instead of taking the machine down
+			cmd = { "systemd-run", "--user", "--scope", "--quiet", "-p", "MemoryMax=4G", "rust-analyzer" },
 			settings = {
 				["rust-analyzer"] = {
-					checkOnSave = {
+					check = {
 						command = "clippy",
+					},
+					-- keep query caches small; default grows unbounded with workspace size
+					lru = {
+						capacity = 64,
+					},
+					-- skip whole-workspace warm-up indexing at startup
+					cachePriming = {
+						enable = false,
 					},
 				},
 			},

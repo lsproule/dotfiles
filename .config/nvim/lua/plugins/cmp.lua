@@ -1,76 +1,50 @@
+-- Completion engine: blink.cmp (replaces nvim-cmp).
+-- Capabilities are advertised to LSP servers by lsp-manager via
+-- require("blink.cmp").get_lsp_capabilities() (see lsp-manager init.lua).
 return {
-  "hrsh7th/nvim-cmp",
+  "saghen/blink.cmp",
+  version = "*", -- use a release tag so the prebuilt fuzzy matcher is downloaded
+  event = "InsertEnter",
   dependencies = {
-    'hrsh7th/cmp-nvim-lsp',
-    'hrsh7th/cmp-buffer',
-    'hrsh7th/cmp-path',
-    'hrsh7th/cmp-cmdline',
-    'saadparwaiz1/cmp_luasnip'
+    "L3MON4D3/LuaSnip",
+    "rafamadriz/friendly-snippets",
+    -- blink.compat lets us reuse nvim-cmp sources (vim-dadbod-completion for SQL)
+    "saghen/blink.compat",
   },
-  config = function()
-    local cmp = require 'cmp'
-    local luasnip = require("luasnip")
+  opts = {
+    snippets = { preset = "luasnip" },
 
-    cmp.setup({
-      snippet = {
-        expand = function(args)
-          require('luasnip').lsp_expand(args.body) -- For `luasnip` users.
-        end,
+    sources = {
+      -- snippets come from the built-in "snippets" source (luasnip preset below),
+      -- not a "luasnip" source id (that was removed in newer blink.cmp).
+      default = { "lsp", "snippets", "path", "buffer" },
+      -- SQL buffers also get vim-dadbod-completion (an nvim-cmp source) via blink.compat
+      per_filetype = {
+        sql = { "dadbod", "lsp", "snippets", "path", "buffer" },
+        mysql = { "dadbod", "lsp", "snippets", "path", "buffer" },
+        plsql = { "dadbod", "lsp", "snippets", "path", "buffer" },
       },
-      window = {
-      },
-      mapping = cmp.mapping.preset.insert({
-        ['<C-b>'] = cmp.mapping.scroll_docs(-4),
-        ['<C-f>'] = cmp.mapping.scroll_docs(4),
-        ['<C-Space>'] = cmp.mapping.complete(),
-        ['<C-e>'] = cmp.mapping.abort(),
-        ['<CR>'] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
-        ["<C-j>"] = cmp.mapping(function(fallback)
-          if cmp.visible() then
-            cmp.select_next_item()
-          elseif luasnip.locally_jumpable(1) then
-            luasnip.jump(1)
-          else
-            fallback()
-          end
-        end, { "i", "s" }),
-
-        ["<C-k>"] = cmp.mapping(function(fallback)
-          if cmp.visible() then
-            cmp.select_prev_item()
-          elseif luasnip.locally_jumpable(-1) then
-            luasnip.jump(-1)
-          else
-            fallback()
-          end
-        end, { "i", "s" }),
-
-      }),
-      sources = cmp.config.sources({
-          { name = 'nvim_lsp' },
-          { name = 'luasnip' }, -- For luasnip users.
+      providers = {
+        dadbod = {
+          name = "vim-dadbod-completion", -- the nvim-cmp source name
+          module = "blink.compat.source",
         },
-        {
-          { name = 'buffer' },
-        })
-    })
+      },
+    },
 
-    cmp.setup.cmdline({ '/', '?' }, {
-      mapping = cmp.mapping.preset.cmdline(),
-      sources = {
-        { name = 'buffer' }
-      }
-    })
+    keymap = {
+      preset = "default",
+      ["<C-Space>"] = { "show", "show_documentation", "hide_documentation" },
+      ["<CR>"] = { "accept", "fallback" },
+      ["<C-e>"] = { "hide", "fallback" },
+      ["<C-j>"] = { "select_next", "snippet_forward", "fallback" },
+      ["<C-k>"] = { "select_prev", "snippet_backward", "fallback" },
+      ["<C-b>"] = { "scroll_documentation_up", "fallback" },
+      ["<C-f>"] = { "scroll_documentation_down", "fallback" },
+    },
 
-    cmp.setup.cmdline(':', {
-      mapping = cmp.mapping.preset.cmdline(),
-      sources = cmp.config.sources({
-        { name = 'path' }
-      }, {
-        { name = 'cmdline' }
-      }),
-      matching = { disallow_symbol_nonprefix_matching = false }
-    })
-  end
+    fuzzy = { implementation = "prefer_rust_with_warning" },
 
+    signature = { enabled = true },
+  },
 }

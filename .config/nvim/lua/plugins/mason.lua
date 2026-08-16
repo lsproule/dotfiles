@@ -1,13 +1,28 @@
 return {
   {
     "williamboman/mason.nvim",
+    dependencies = { "williamboman/mason-lspconfig.nvim" },
     event = "VimEnter",
     config = function()
+      -- mason.setup prepends ~/.local/share/nvim/mason/bin to vim.env.PATH, so it
+      -- must run before any vim.lsp.enable (lsp-manager depends on this plugin).
+      require("mason").setup({})
+      require("mason-lspconfig").setup({
+        ensure_installed = {}, -- lsp-manager drives installs on demand
+        automatic_enable = false, -- don't auto-enable every installed server; lsp-manager owns enable/disable state
+      })
 
       vim.api.nvim_create_autocmd("LspAttach", {
         group = vim.api.nvim_create_augroup("userlspconfig", {}),
         callback = function(ev)
           local opts = { buffer = ev.buf }
+
+          -- Enable inlay hints by default for servers that support them
+          -- (toggle per session with <leader>ti).
+          local client = vim.lsp.get_client_by_id(ev.data.client_id)
+          if client and client:supports_method("textDocument/inlayHint") then
+            vim.lsp.inlay_hint.enable(true, { bufnr = ev.buf })
+          end
           vim.keymap.set("n", "gD", vim.lsp.buf.declaration, opts)
           vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts)
           vim.keymap.set("n", "gk", vim.lsp.buf.hover, opts)
@@ -40,10 +55,4 @@ return {
       })
     end,
   },
-
-  {
-    "williamboman/mason-lspconfig.nvim",
-    event = "VimEnter",
-  },
-
 }

@@ -8,8 +8,10 @@ km.set("n", "<leader>e", function()
 end, { desc = "Toggle Explorer Focus" })
 
 km.set("n", "<leader>ti", function()
-  vim.cmd("InlayHintsToggle")
-end)
+  -- native inlay-hint toggle for the current buffer
+  -- (replaces the old InlayHintsToggle plugin command)
+  vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled({ bufnr = 0 }), { bufnr = 0 })
+end, { desc = "Toggle inlay hints" })
 --km.set("n", "<leader>e", require("telescope.builtin").find_files, { desc = "Find Files" })
 
 km.set("n", "<leader>w", function()
@@ -98,7 +100,7 @@ km.set("t", "<C-k>", [[<Cmd>wincmd k<CR>]])
 km.set("t", "<C-l>", [[<Cmd>wincmd l<CR>]])
 km.set("t", "<C-w>", [[<C-\><C-n><C-w>]])
 
-km.set("n", "<leader>ts", function()
+km.set("n", "<leader>tp", function()
   vim.cmd("TSPlaygroundToggle")
 end, { desc = "Toggle TS Playground" })
 
@@ -152,9 +154,8 @@ km.set("n", "<leader>ha", function()
   require("harpoon.mark").add_file()
 end, { desc = "Harpoon add file" })
 
-km.set("n", "<leader>ts", function()
-  vim.cmd("ToggleServer")
-end)
+-- <leader>ts (LSP server toggle picker) is bound by lsp-manager itself; removed
+-- the duplicate mapping here. TS Playground now lives on <leader>tp (above).
 
 km.set("n", "<leader>rt", function()
   vim.cmd("ReplToggle")

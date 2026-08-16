@@ -16,6 +16,17 @@ return {
     event = "VimEnter",
     name = "lsp-manager",
     lazy = false,
+    -- Dependencies that must load before lsp-manager.setup() runs:
+    --  * mason / mason-lspconfig: mason puts its bin dir on PATH and provides the
+    --    registry + server->package mappings used to install servers.
+    --  * nvim-lspconfig: ships the bundled lsp/<name>.lua defaults (cmd, filetypes,
+    --    root_dir). The minimal per-server configs (e.g. `return {"pyright"}`) rely
+    --    on these being on the runtimepath; without it servers have no cmd/filetypes.
+    dependencies = {
+      "williamboman/mason.nvim",
+      "williamboman/mason-lspconfig.nvim",
+      "neovim/nvim-lspconfig",
+    },
     config = function()
       require("lsp-manager").setup {}
     end,

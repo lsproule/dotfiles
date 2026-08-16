@@ -48,7 +48,7 @@ source ~/scripts/exports.zsh
 source ~/scripts/exports.zsh
 source ~/scripts/termconfig.zsh
 
-WORK=true
+WORK=false
 
 if [[ $WORK == true ]]; then
   source ~/scripts/vokol.zsh
@@ -60,7 +60,7 @@ path=("$HOME/go/bin" $path)
 path=("$HOME/.local/bin" $path)
 export PATH
 
-source <(tea completion zsh)
+#source <(tea completion zsh)
 #zprof
 
 # >>> juliaup initialize >>>

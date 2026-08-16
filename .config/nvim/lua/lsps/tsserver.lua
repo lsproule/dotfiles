@@ -1,9 +1,8 @@
 return {
 	"ts_ls",
 	config = function()
-		local capabilities = vim.lsp.protocol.make_client_capabilities()
+		-- capabilities come from the global vim.lsp.config("*") default (blink.cmp)
 		vim.lsp.config["ts_ls"] = {
-			capabilities = capabilities,
 			settings = {
 				completions = {
 					completeFunctionCalls = true,

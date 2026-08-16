@@ -53,7 +53,7 @@ exec --no-startup-id dms run
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec alacritty
+bindsym $mod+Return exec $HOME/.local/bin/kitty
 
 # kill focused window
 bindsym $mod+q kill
